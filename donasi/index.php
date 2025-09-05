@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donasi - Rumah Baca</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root{ --rb-green:#15803d; --rb-orange:#f97316; }
+.text-gradient{ background:linear-gradient(90deg,var(--rb-green),var(--rb-orange)); -webkit-background-clip:text; color:transparent;}
+.bg-rb-green{ background:var(--rb-green); } .bg-rb-orange{ background:var(--rb-orange); }
+.card{ background:#fff; border-radius:1rem; box-shadow:0 10px 24px rgba(0,0,0,.08); }
+.card-hover{ transition:.25s; } .card-hover:hover{ transform:translateY(-4px); box-shadow:0 16px 30px rgba(0,0,0,.12);}
+.badge{ display:inline-block; padding:.35rem .6rem; border-radius:999px; font-size:.8rem; background:#f3f4f6; }
+.btn{ display:inline-flex; align-items:center; gap:.5rem; justify-content:center; padding:.9rem 1.1rem; border-radius:.75rem; font-weight:700; transition:.25s; }
+.btn-primary{ background:var(--rb-green); color:#fff; } .btn-primary:hover{ background:var(--rb-orange);}
+.btn-outline{ border:1px solid #e5e7eb; background:#fff; } .btn-outline:hover{ border-color:var(--rb-orange); color:var(--rb-orange); }
+.input, .select, .textarea{ width:100%; border:1px solid #d1d5db; border-radius:.75rem; padding:.8rem 1rem; outline:none; transition:.2s;}
+.input:focus, .select:focus, .textarea:focus{ border-color:var(--rb-orange); box-shadow:0 0 0 3px rgba(249,115,22,.15);}
+.grid-presets .opt{ border:1px solid #e5e7eb; border-radius:.9rem; padding:1rem; text-align:center; cursor:pointer; user-select:none;}
+.grid-presets .opt.active{ border-color:var(--rb-orange); background:#fff7ed;}
+.tab{ border:1px solid #e5e7eb; border-radius:.9rem; overflow:hidden; display:flex; }
+.tab a{ flex:1; text-align:center; padding:.8rem 1rem; font-weight:600; border-right:1px solid #e5e7eb; }
+.tab a:last-child{ border-right:none; }
+.tab a.active{ background:#fff7ed; color:var(--rb-orange); }
+.proof-hint{ font-size:.85rem; color:#6b7280; }
+.donor-item{ display:flex; align-items:center; justify-content:space-between; padding:1rem; border-bottom:1px dashed #e5e7eb; }
+.avatar{ width:36px; height:36px; border-radius:999px; background:#e5f7ec; display:inline-flex; align-items:center; justify-content:center; color:var(--rb-green); font-weight:700;}
+.pagination a{ padding:.5rem .8rem; border:1px solid #e5e7eb; border-radius:.6rem; margin-right:.4rem; }
+.pagination a.active{ background:var(--rb-green); color:#fff; border-color:var(--rb-green);}
+</style>
+</head>
+<body>
+
+<?php include '../navbar.php'; ?>
+
+<!-- HERO -->
+<section class="text-white text-center py-20 px-6 bg-rb-green relative overflow-hidden">
+  <div class="max-w-4xl mx-auto relative z-10 mt-10">
+    <h1 class="text-4xl sm:text-5xl font-bold mb-4">Bersama Wujudkan Akses Baca untuk Semua</h1>
+    <p class="text-white/90 text-lg">Donasi Anda mendukung buku, rumah baca, dan program literasi bagi anak-anak.</p>
+  </div>
+</section>
+
+<!-- Section Donasi -->
+<section class="py-14 px-6 sm:px-10 lg:px-20 bg-gradient-to-b from-emerald-50 via-white to-orange-50">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+    
+    <!-- LEFT: Donasi Form -->
+    <div class="bg-white shadow-xl rounded-xl p-8" data-aos="fade-right">
+      <h2 class="text-2xl font-bold text-gradient mb-6">
+        Pilih Nominal & Metode Pembayaran
+      </h2>
+
+      <form action="" method="post" enctype="multipart/form-data" id="donasiForm" class="space-y-6">
+        <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+
+        <!-- Preset amounts -->
+          <div>
+            <p class="font-semibold mb-3">Donasi Cepat</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 grid-presets" id="presetGroup">
+              <div class="opt">Rp.10.000</div>
+              <div class="opt">Rp.25.000</div>
+              <div class="opt">Rp.50.000</div>
+              <div class="opt">Rp.60.000</div>
+              <div class="opt">Rp.100.000</div>
+              <div class="opt">Lainnya</div>
+            </div>
+            <input type="hidden" name="preset" id="presetInput" value="">
+          </div>
+  
+          <!-- Custom amount -->
+          <div id="customAmountWrapper">
+            <div class="flex gap-3">
+              <input type="text" inputmode="numeric" name="custom" id="customAmount" class="input" placeholder="RP">
+            </div>
+          </div>
+
+        <!-- Metode Pembayaran card -->
+        <div class="bg-green-50 border border-green-200 rounded-lg shadow-sm p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="bg-white border border-green-200 w-20 h-16 rounded-lg flex items-center justify-center">
+                <i class="bi bi-bank text-3xl text-emerald-600"></i>
+              </div>
+              <span class="text-gray-800 font-medium text-lg" id="metodeLabel">
+                Metode Pembayaran
+              </span>
+            </div>
+            <button type="button" id="paySelect" class="px-4 py-2 bg-white hover:bg-emerald-600 hover:text-white text-emerald-600 border border-emerald-200 font-semibold rounded-lg transition">
+              Pilih
+            </button>
+          </div>
+        </div>
+
+        <!-- Donor info -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="font-semibold mb-2 inline-block">Nama</label>
+            <input type="text" class="input w-full" name="nama" required placeholder="Nama lengkap">
+          </div>
+          <div>
+            <label class="font-semibold mb-2 inline-block">Email (opsional)</label>
+            <input type="email" class="input w-full" name="email" placeholder="email@anda.com">
+          </div>
+        </div>
+        <div>
+          <label class="font-semibold mb-2 inline-block">Pesan (opsional)</label>
+          <textarea name="pesan" class="textarea w-full" rows="3" placeholder="Tulis doa/dukungan singkat..."></textarea>
+        </div>
+        <div class="flex items-center gap-2 pb-6">
+          <input type="checkbox" id="tampilkan_nama" name="tampilkan_nama" checked>
+          <label for="tampilkan_nama">Tampilkan nama pada daftar donatur</label>
+        </div>
+        <a href="invoice.html" id="submitDonasi" class="bg-emerald-600 hover:bg-emerald-500 font-bold rounded-lg text-white p-3 w-full transition">
+            <span id="submitText">Donasi-</span>
+          </a>
+        
+        <!-- <button type="submit" id="submitDonasi" class="bg-emerald-600 hover:bg-emerald-500 font-bold rounded-lg text-white p-3 w-full transition">
+          <span id="submitText">Donasi- Rp</span>
+        </button> -->
+
+      </form>
+    </div>
+
+    <!-- RIGHT: Daftar Donatur -->
+    <div class="bg-white shadow-xl rounded-xl h-[50vh] flex flex-col" data-aos="fade-left overflow-x-hidden">
+      <!-- Header tetap -->
+      <div class="p-4 border-b bg-emerald-600 text-white rounded-t-xl top-0 z-10">
+        <h3 class="text-lg font-semibold ">Daftar Donatur</h3>
+      </div>
+
+      <!-- List scrollable -->
+      <div class="flex-1 overflow-y-auto p-4">
+        <ul class="space-y-3 text-slate-700 text-sm sm:text-base">
+          <li class="flex justify-between items-center border-b pb-2">
+            <span class="font-medium">1. Bapak Andi Prasetyo</span>
+            <span class="bg-orange-100 text-orange-600 text-sm font-semibold px-3 py-1 rounded-full">
+              Rp 500.000
+            </span>
+          </li>
+          <li class="flex justify-between items-center border-b pb-2">
+            <span class="font-medium">2. Ibu Siti Rahma</span>
+            <span class="bg-orange-100 text-orange-600 text-sm font-semibold px-3 py-1 rounded-full">
+              Rp 300.000
+            </span>
+          </li>
+          <li class="flex justify-between items-center border-b pb-2">
+            <span class="font-medium">3. Komunitas Literasi Bandung</span>
+            <span class="bg-orange-100 text-orange-600 text-sm font-semibold px-3 py-1 rounded-full">
+              Rp 1.000.000
+            </span>
+          </li>
+          <li class="flex justify-between items-center border-b pb-2">
+            <span class="font-medium">4. Bapak Joko Santoso</span>
+            <span class="bg-orange-100 text-orange-600 text-sm font-semibold px-3 py-1 rounded-full">
+              Rp 200.000
+            </span>
+          </li>
+          <li class="flex justify-between items-center border-b pb-2">
+            <span class="font-medium">5. Ibu Dewi Lestari</span>
+            <span class="bg-orange-100 text-orange-600 text-sm font-semibold px-3 py-1 rounded-full">
+              Rp 150.000
+            </span>
+          </li>
+          <li class="flex justify-between items-center border-b pb-2">
+            <span class="font-medium">6. Anonim</span>
+            <span class="bg-orange-100 text-orange-600 text-sm font-semibold px-3 py-1 rounded-full">
+              Rp 2.000.000
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
+
+<!-- Popup metode pembayaran -->
+<div id="popupMetode" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <div class="w-[26rem] rounded-l-3xl bg-white shadow-lg overflow-hidden flex flex-col max-h-[90vh]">
+    
+    
+    <div class="overflow-y-auto flex-1">
+      <!-- Header -->
+      <div class="bg-green-500 p-4 h-[8rem] relative">
+        <div id="closePayman" class="absolute top-4 right-4 text-gray-100 text-3xl cursor-pointer">
+          <i class="bi bi-x"></i>
+        </div>
+        <div class="text-white font-bold text-2xl flex justify-center items-center h-full">
+          Metode Pembayaran
+        </div>
+      </div>
+      <!-- E-digital -->
+      <div class="bg-gray-100 border p-4 pl-8 text-base font-semibold text-stone-800">
+        Pembayaran Instan
+      </div>
+      <section class="E-digital">
+        <!-- Qris -->
+        <div class="bg-white border p-2 pl-8 h-[3.5rem] flex items-center text-base font-semibold text-stone-800 cursor-pointer">
+          <img src="../image/logo-payman/Qris.png" class="w-[60px]">
+          <span class="ml-6">Qris</span>
+          <i class="bi bi-check-lg hidden text-green-600 ml-auto pr-4 checkmark"></i>
+        </div>
+        <!-- Gopay -->
+        <div class="bg-white border p-2 pl-8 h-[3.5rem] flex items-center text-base font-semibold text-stone-800 cursor-pointer">
+          <img src="../image/logo-payman/gopay.png" class="w-[60px]">
+          <span class="ml-6">Gopay</span>
+          <i class="bi bi-check-lg hidden text-green-600 ml-auto pr-4 checkmark"></i>
+        </div>
+        <!-- Dana -->
+        <div class="bg-white border p-2 pl-8 h-[3.5rem] flex items-center text-base font-semibold text-stone-800 cursor-pointer">
+          <img src="../image/logo-payman/dana.png" class="w-[60px]">
+          <span class="ml-6">Dana</span>
+          <i class="bi bi-check-lg hidden text-green-600 ml-auto pr-4 checkmark"></i>
+        </div>
+        <!-- OVO -->
+        <div class="bg-white border p-2 pl-8 h-[3.5rem] flex items-center text-base font-semibold text-stone-800 cursor-pointer">
+          <img src="../image/logo-payman/ovo.png" class="w-[60px] ">
+          <span class="ml-6">OVO</span>
+          <i class="bi bi-check-lg hidden text-green-600 ml-auto pr-4 checkmark"></i>
+        </div>
+      </section>
+  
+      <!-- Bank / Virtual account -->
+      <div class="bg-gray-100 border p-4 pl-8 text-base font-semibold text-stone-800">
+        Virtual Account (Bank)
+      </div>
+      <section class="bank">
+        <!-- Mandiri -->
+        <div class="bg-white border p-2 pl-8 h-[3.5rem] flex items-center text-base font-semibold text-stone-800 cursor-pointer">
+          <img src="../image/logo-payman/mandiri.png" class="w-[60px]">
+          <span class="ml-6">VA Bank Mandiri</span>
+          <i class="bi bi-check-lg hidden text-green-600 ml-auto pr-4 checkmark"></i>
+        </div>
+        <!-- Mandiri -->
+        <div class="bg-white border p-2 pl-8 h-[3.5rem] flex items-center text-base font-semibold text-stone-800 cursor-pointer">
+          <img src="../image/logo-payman/mandiri.png" class="w-[60px]">
+          <span class="ml-6">VA Bank Mandiri</span>
+          <i class="bi bi-check-lg hidden text-green-600 ml-auto pr-4 checkmark"></i>
+        </div>
+        <!-- Mandiri -->
+        <div class="bg-white border p-2 pl-8 h-[3.5rem] flex items-center text-base font-semibold text-stone-800 cursor-pointer">
+          <img src="../image/logo-payman/mandiri.png" class="w-[60px]">
+          <span class="ml-6">VA Bank Mandiri</span>
+          <i class="bi bi-check-lg hidden text-green-600 ml-auto pr-4 checkmark"></i>
+        </div>
+        <!-- Mandiri -->
+        <div class="bg-white border p-2 pl-8 h-[3.5rem] flex items-center text-base font-semibold text-stone-800 cursor-pointer">
+          <img src="../image/logo-payman/mandiri.png" class="w-[60px]">
+          <span class="ml-6">VA Bank Mandiri</span>
+          <i class="bi bi-check-lg hidden text-green-600 ml-auto pr-4 checkmark"></i>
+        </div>
+        <!-- Mandiri -->
+        <div class="bg-white border p-2 pl-8 h-[3.5rem] flex items-center text-base font-semibold text-stone-800 cursor-pointer">
+          <img src="../image/logo-payman/mandiri.png" class="w-[60px]">
+          <span class="ml-6">VA Bank Mandiri</span>
+          <i class="bi bi-check-lg hidden text-green-600 ml-auto pr-4 checkmark"></i>
+        </div>
+      </section>
+    </div>
+    
+  </div>
+</div>
+
+
+<?php include '../footer.php'; ?>
+
+<script src="../translate.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- JS Interaktif -->
+<script>
+// --- DONASI CEPAT ---
+const presets = document.querySelectorAll('#presetGroup .opt');
+const presetInput = document.getElementById('presetInput');
+const customAmount = document.getElementById('customAmount');
+const customAmountWrapper = document.getElementById('customAmountWrapper');
+const submitText = document.getElementById('submitText');
+
+// sembunyikan input custom dulu
+customAmountWrapper.style.display = 'none';
+
+presets.forEach(opt => {
+  opt.addEventListener('click', () => {
+    presets.forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+
+    let val = opt.textContent.trim();
+    if (val.toLowerCase().includes('lainnya')) {
+      customAmountWrapper.style.display = 'block';
+      customAmount.value = '';
+      presetInput.value = '';
+      submitText.textContent = 'Donasi - ';
+    } else {
+      customAmountWrapper.style.display = 'none';
+      presetInput.value = val;
+      submitText.textContent = `Donasi - ${val}`;
+    }
+  });
+});
+
+customAmount.addEventListener('input', () => {
+  let val = customAmount.value.trim();
+  if (val) {
+    presetInput.value = val;
+    submitText.textContent = `Donasi - Rp${val}`;
+  } else {
+    submitText.textContent = 'Donasi - ';
+  }
+});
+
+// --- METODE PEMBAYARAN ---
+const payBtn = document.querySelector('#paySelect');
+const popupMetode = document.getElementById('popupMetode');
+const closePayman = document.querySelector('#closePayman');
+const metodeLabel = document.getElementById('metodeLabel');
+
+// buka popup
+payBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  popupMetode.classList.remove('hidden');
+});
+
+// tutup popup via tombol X
+closePayman.addEventListener('click', () => {
+  popupMetode.classList.add('hidden');
+});
+
+// klik di luar modal juga nutup
+popupMetode.addEventListener('click', (e) => {
+  if (e.target === popupMetode) {
+    popupMetode.classList.add('hidden');
+  }
+});
+
+// pilih metode
+popupMetode.querySelectorAll('.E-digital div, .bank div').forEach(item => {
+  item.addEventListener('click', () => {
+    const text = item.innerText.trim();
+    metodeLabel.textContent = text;
+    popupMetode.classList.add('hidden');
+
+    // reset semua ceklis
+    popupMetode.querySelectorAll('.checkmark').forEach(c => c.classList.add('hidden'));
+
+    // tampilkan ceklis di item yang dipilih
+    item.querySelector('.checkmark').classList.remove('hidden');
+
+    // tutup popup
+    popupMetode.classList.add('hidden');
+
+  });
+});
+
+
+</script>
+
+</body>
+</html>

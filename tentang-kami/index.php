@@ -1,0 +1,559 @@
+<?php 
+    include '../config/koneksi.php';
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tentang Kami - Rumah Baca Ulil Albab</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    :root {
+      --rb-green: #15803d;
+      --rb-orange: #f97316;
+    }
+    .animate-spin-slow {
+        animation: spin 6s linear infinite;
+    }
+
+      .perspective {
+        perspective: 1000px;
+    }
+    .preserve-3d {
+        transform-style: preserve-3d;
+    }
+    .rotate-y-180 {
+        transform: rotateY(180deg);
+    }
+    .backface-hidden {
+        backface-visibility: hidden;
+    }
+  </style>
+  
+<!-- Extra CSS Animations -->
+<style>
+  .animate-bounce-slow {
+    animation: bounceSlow 4s infinite ease-in-out;
+  }
+  .animate-bounce-slow-delay {
+    animation: bounceSlow 5s infinite ease-in-out;
+  }
+  @keyframes bounceSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body >
+
+<?php 
+    include '../navbar.php';
+?>
+<!-- Tentang Kami - Creative Layout -->
+<section class="relative py-24 pb-[12rem] bg-green-50 bg-gradient-to-b from-emerald-50 via-white to-orange-100 overflow-x-hidden" id="tentang-kami">
+  <div class="max-w-6xl mx-auto px-6 pt-20 grid md:grid-cols-2 gap-12 items-center ">
+
+    <!-- Left Content -->
+    <div data-aos="fade-right">
+      <span class="text-sm uppercase tracking-wider text-orange-600 font-semibold">Siapa Kami</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-emerald-900 mt-3 mb-6">
+        Tentang <span class="text-orange-600">Rumah Baca</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-700 leading-relaxed">
+        <strong class="text-emerald-700">Rumah Baca Ulil Albab</strong> adalah ruang literasi bagi anak dan keluarga.  
+        Kami hadir untuk menumbuhkan <span class="text-orange-600 font-semibold">budaya baca</span>  
+        dan membuka jalan menuju generasi yang <span class="text-emerald-700 font-semibold">berdaya</span> dan peduli.
+      </p>
+    </div>
+
+    <!-- Right Highlight -->
+    <div class="bg-white shadow-lg rounded-2xl p-8 relative" data-aos="fade-left">
+      <div class="absolute -top-4 -left-4 w-16 h-16 bg-orange-200 rounded-full blur-xl opacity-50"></div>
+      <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-emerald-200 rounded-full blur-2xl opacity-40"></div>
+
+      <blockquote class="text-2xl md:text-3xl font-semibold text-emerald-900 leading-relaxed relative">
+        “Membaca bukan sekadar hobi,  
+        tapi <span class="text-orange-600">kunci masa depan</span>.”
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- Section Cerita Kami -->
+<section class="py-28 px-6 bg-gradient-to-b from-emerald-50 via-white to-emerald-50 relative overflow-x-hidden">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+    
+    <!-- Gambar -->
+    <div class="relative" data-aos="zoom-in" data-aos-delay="100">
+      <img src="../image/tentang-kami.jpg" alt="Rumah Baca Ulil Albab" class="rounded-3xl shadow-xl w-full h-auto object-cover">
+      <div class="absolute -top-6 -left-6 bg-white px-4 py-2 text-sm font-semibold text-emerald-600 rounded shadow-md">
+        Sejak 2015
+      </div>
+    </div>
+
+    <!-- Cerita Kami -->
+    <div data-aos="fade-left" data-aos-delay="200" class="text-center lg:text-left space-y-6 overflow-x-hidden">
+      <h2 class="text-4xl sm:text-5xl font-extrabold text-emerald-900 leading-tight">Cerita Kami</h2>
+      <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+        Berawal dari kepedulian sederhana, <strong>Rumah Baca Ulil Albab</strong> tumbuh menjadi ruang literasi yang ramah, inklusif, dan memberdayakan.  
+        Kami percaya bahwa <span class="text-emerald-600 font-medium">setiap buku adalah kunci</span> untuk membuka jendela dunia, mengasah imajinasi, dan menumbuhkan generasi kritis.
+      </p>
+      <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+        Didukung oleh relawan, komunitas, dan donatur, Rumah Baca terus menjadi tempat anak-anak belajar, berdiskusi, dan berkarya.  
+        Misi kami sederhana: menyalakan semangat membaca agar lahir <em>generasi yang peduli, cerdas, dan berdaya saing global</em>.
+      </p>
+
+      <blockquote class="border-l-4 border-emerald-400 pl-4 italic text-gray-600">
+        “Kami tidak sekadar membaca buku. Kami menyalakan harapan.”
+      </blockquote>
+
+      <a href="#program" class="inline-block mt-4 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-base font-semibold rounded-full shadow transition-transform hover:-translate-y-1">
+        Lihat Program Kami
+      </a>
+    </div>
+  </div>
+
+  <!-- Hiasan Background -->
+  <div class="absolute bottom-0 right-0 opacity-10 w-64 h-64 bg-[url('https://www.transparenttextures.com/patterns/paper-fibers.png')] bg-repeat z-0"></div>
+</section>
+
+<!-- Visi & Misi -->
+<section class="relative py-24 bg-gradient-to-b from-emerald-50 via-white to-gray-50 overflow-x-hidden" id="visi-misi">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+
+    <!-- Visi -->
+    <div class="relative bg-white shadow-lg rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-right">
+      <div class="flex items-center gap-3 mb-4">
+        <img src="../image/tungsten.png" alt="Visi Icon" class="w-9 h-9">
+        <h2 class="text-3xl font-bold text-slate-800">Visi</h2>
+      </div>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        “Membangun masyarakat literat yang mandiri, kritis, dan peduli lingkungan, 
+        serta mampu berdaya saing di tingkat global melalui akses pengetahuan yang merata.”
+      </p>
+    </div>
+
+    <!-- Misi -->
+    <div class="relative bg-white shadow-lg rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-left">
+      <div class="flex items-center gap-3 mb-4">
+        <img src="../image/target.png" alt="Misi Icon" class="w-9 h-9">
+        <h2 class="text-3xl font-bold text-slate-800">Misi</h2>
+      </div>
+      <ul class="space-y-4 text-slate-600 leading-relaxed">
+        <li class="flex items-start gap-2">
+          <img src="../image/book.png" alt="Book Icon" class="w-6 h-6">
+          Menyediakan akses bacaan dan program literasi yang inklusif untuk semua kalangan.
+        </li>
+        <li class="flex items-start gap-2">
+          <img src="../image/people.png" alt="People Icon" class="w-6 h-6">
+          Membangun ruang aman untuk berdiskusi, belajar, dan berkarya bersama masyarakat.
+        </li>
+        <li class="flex items-start gap-2">
+          <img src="../image/volunteer.png" alt="Volunteer Icon" class="w-6 h-6">
+          Menggerakkan relawan, sekolah, dan komunitas lokal dalam kegiatan literasi.
+        </li>
+        <li class="flex items-start gap-2">
+          <img src="../image/dna.png" alt="Generasi Icon" class="w-6 h-6">
+          Melahirkan generasi kritis, kreatif, peduli sosial, dan berdaya saing global.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- Bagian Sejarah -->
+<section class="relative py-20 overflow-hidden bg-gradient-to-br from-amber-50 via-white to-emerald-50">
+  <!-- dekorasi pattern -->
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/white-wall.png')] opacity-20"></div>
+  <div class="absolute top-0 left-0 w-40 h-40 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+  <div class="absolute bottom-0 right-0 w-56 h-56 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+  
+  <div class="relative max-w-5xl mx-auto px-6 text-center">
+    <!-- Judul -->
+    <h2 class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-orange-500 mb-6 tracking-wide font-serif">
+      Jejak Perjalanan Rumah Baca
+    </h2>
+    <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-12 italic">
+      Dari ruang kecil penuh mimpi, hingga menjadi pusat literasi yang menginspirasi banyak generasi.
+    </p>
+
+    <!-- Wrapper slide -->
+    <div id="story-slides" class="relative w-full h-auto min-h-[22rem] overflow-hidden bg-stone-50 rounded-2xl shadow-lg">
+      
+      <!-- Slide 1 -->
+      <div class="slide absolute inset-0 flex flex-col md:flex-row items-center justify-center opacity-0 p-6">
+        <img src="../image/tahun-2015.png" alt="2015" 
+             class="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded-xl shadow-2xl mb-6 md:mb-0 md:mr-8">
+        <div class="text-center md:text-left max-w-md">
+          <h3 class="text-2xl font-semibold text-amber-300">2015</h3>
+          <p class="mt-2 text-slate-700">Di sebuah sudut desa, lahirlah <span class="font-semibold">Rumah Baca</span> — berawal dari ruang kecil yang penuh semangat pemuda peduli literasi.</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide absolute inset-0 flex flex-col md:flex-row items-center justify-center opacity-0 p-6">
+        <img src="../image/story-2016.png" alt="2016" 
+             class="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded-xl shadow-2xl mb-6 md:mb-0 md:mr-8">
+        <div class="text-center md:text-left max-w-md">
+          <h3 class="text-2xl font-semibold text-teal-300">2016</h3>
+          <p class="mt-2 text-slate-700">Semangat itu menular, <span class="font-semibold">relawan dan donatur lokal</span> mulai hadir, menumbuhkan harapan baru untuk anak-anak desa.</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide absolute inset-0 flex flex-col md:flex-row items-center justify-center opacity-0 p-6">
+        <img src="../image/story-2020.png" alt="2020" 
+             class="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded-xl shadow-2xl mb-6 md:mb-0 md:mr-8">
+        <div class="text-center md:text-left max-w-md">
+          <h3 class="text-3xl font-bold text-emerald-700">2020</h3>
+          <p class="mt-2 text-slate-700">Koleksi buku bertambah, kelas literasi rutin digelar, menjadikan Rumah Baca semakin <span class="font-semibold">ramai dan hidup</span>.</p>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="slide absolute inset-0 flex flex-col md:flex-row items-center justify-center opacity-0 p-6">
+        <img src="../image/story-2023.png" alt="2023" 
+             class="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded-xl shadow-2xl mb-6 md:mb-0 md:mr-8">
+        <div class="text-center md:text-left max-w-md">
+          <h3 class="text-3xl font-bold text-orange-600">2023</h3>
+          <p class="mt-2 text-slate-700">Rumah Baca tak lagi berdiri sendiri, kini menjadi bagian dari <span class="font-semibold">jaringan komunitas literasi</span> yang lebih luas.</p>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="slide absolute inset-0 flex flex-col md:flex-row items-center justify-center opacity-0 p-6">
+        <img src="../image/story-2025.png" alt="2025" 
+             class="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded-xl shadow-2xl mb-6 md:mb-0 md:mr-8">
+        <div class="text-center md:text-left max-w-md">
+          <h3 class="text-3xl font-bold text-emerald-700">2025</h3>
+          <p class="mt-2 text-slate-700"><span class="font-semibold">Menjadi pusat literasi</span> yang menginspirasi, berjejaring nasional, dan terus berdaya bersama masyarakat.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Nilai & Filosofi -->
+<section class="relative py-20 bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden">
+  <!-- Decorative Background -->
+  <div class="absolute inset-0 opacity-10 pointer-events-none">
+    <div class="absolute w-96 h-96 bg-emerald-300 rounded-full blur-3xl top-20 -left-40"></div>
+    <div class="absolute w-80 h-80 bg-orange-300 rounded-full blur-3xl bottom-20 -right-40"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-[var(--rb-green)] mb-16" data-aos="fade-up">
+      Nilai & Filosofi
+    </h2>
+
+    <div class="space-y-16">
+      <!-- Inklusif -->
+      <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
+        <div class="flex-shrink-0 w-24 h-24 flex items-center justify-center rounded-full bg-emerald-100 text-[var(--rb-green)] shadow-lg">
+          <i class="fas fa-people-arrows text-3xl animate-bounce"></i>
+        </div>
+        <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition">
+          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Inklusif</h3>
+          <p class="text-slate-600">Terbuka untuk semua kalangan tanpa membedakan latar belakang.</p>
+        </div>
+      </div>
+
+      <!-- Kolaboratif -->
+      <div class="flex flex-col md:flex-row-reverse items-center gap-10" data-aos="fade-left">
+        <div class="flex-shrink-0 w-24 h-24 flex items-center justify-center rounded-full bg-orange-100 text-orange-500 shadow-lg">
+          <i class="fas fa-handshake text-3xl animate-pulse"></i>
+        </div>
+        <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition">
+          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Kolaboratif</h3>
+          <p class="text-slate-600">Menggerakkan relawan, komunitas, dan masyarakat sekitar.</p>
+        </div>
+      </div>
+
+      <!-- Berdaya -->
+      <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
+        <div class="flex-shrink-0 w-24 h-24 flex items-center justify-center rounded-full bg-emerald-100 text-[var(--rb-green)] shadow-lg">
+          <i class="fas fa-lightbulb text-3xl animate-spin-slow"></i>
+        </div>
+        <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition">
+          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Berdaya</h3>
+          <p class="text-slate-600">Mendorong setiap anak untuk tumbuh mandiri, kreatif, dan kritis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tim Pendiri Rumah Baca -->
+<section class="relative py-28 px-6 bg-[linear-gradient(to_bottom,_#f9fdfb_10%,_#ffffff_90%)] overflow-hidden">
+  <!-- Background Texture -->
+  <div class="absolute inset-0 z-0 bg-[url('https://www.transparenttextures.com/patterns/lined-paper.png')] opacity-5"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto mb-16">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-left md:w-2/3" data-aos="fade-right" data-aos-delay="100">
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-[var(--rb-green)] mb-3">
+          Tim Rumah Baca
+        </h2>
+        <p class="text-base sm:text-lg text-gray-600 max-w-xl">
+          Orang-orang penuh dedikasi yang melahirkan <span class="font-semibold text-[var(--rb-green)]">Rumah Baca</span>, 
+          tempat tumbuhnya harapan, ilmu, dan persahabatan bagi generasi penerus bangsa.
+        </p>
+      </div>
+      <div class="hidden md:block md:w-1/3" data-aos="fade-left" data-aos-delay="200">
+        <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" 
+             alt="Icon Team" class="w-28 h-28 opacity-40 mx-auto">
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid Card Tim -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+    <!-- 🌀 Card Example -->
+    <div class="perspective hover:scale-[1.02] transition-transform">
+      <div onclick="this.classList.toggle('rotate-y-180')" 
+           class="card-flip relative w-full h-[420px] transition-transform duration-700 preserve-3d">
+      
+        <!-- Front -->
+        <div class="absolute inset-0 bg-white border border-emerald-100 hover:border-emerald-400 rounded-3xl shadow-md flex flex-col items-center justify-center backface-hidden p-6 cursor-pointer">
+          <div class="w-44 h-44 rounded-full overflow-hidden border-4 border-emerald-50 hover:border-[var(--rb-green)] mb-4 shadow">
+            <img src="../assets/pak-aditya.jpg" alt="Aditya" class="w-full h-full object-cover">
+          </div>
+          <h4 class="text-2xl font-bold text-[var(--rb-green)]">Aditya, S.T</h4>
+          <p class="text-orange-600 text-sm font-medium">Ketua Yayasan</p>
+          <div class="flex gap-4 mt-4 text-[var(--rb-green)]">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+
+        <!-- Back -->
+        <div class="absolute inset-0 bg-gradient-to-b from-emerald-50 to-white rounded-3xl shadow-lg p-6 text-center transform rotate-y-180 backface-hidden flex flex-col items-center justify-center">
+          <svg class="w-10 h-10 text-emerald-300 mb-3 animate-bounce" fill="currentColor"><path d="M9.17 6A4.17..."/></svg>
+          <p class="text-gray-700 italic">“Membangun Rumah Baca bukan sekadar tempat membaca, tapi rumah bagi mimpi anak-anak.”</p>
+          <span class="mt-2 text-[var(--rb-green)] text-sm">— Aditya</span>
+        </div>
+      </div>
+    </div>
+
+     <!-- 🌀 Card Example -->
+    <div class="perspective hover:scale-[1.02] transition-transform">
+      <div onclick="this.classList.toggle('rotate-y-180')" 
+           class="card-flip relative w-full h-[420px] transition-transform duration-700 preserve-3d">
+      
+        <!-- Front -->
+        <div class="absolute inset-0 bg-white border border-emerald-100 hover:border-emerald-400 rounded-3xl shadow-md flex flex-col items-center justify-center backface-hidden p-6 cursor-pointer">
+          <div class="w-44 h-44 rounded-full overflow-hidden border-4 border-emerald-50 hover:border-[var(--rb-green)] mb-4 shadow">
+            <img src="../assets/pak-aditya.jpg" alt="Aditya" class="w-full h-full object-cover">
+          </div>
+          <h4 class="text-2xl font-bold text-[var(--rb-green)]">Aditya, S.T</h4>
+          <p class="text-orange-600 text-sm font-medium">Ketua Yayasan</p>
+          <div class="flex gap-4 mt-4 text-[var(--rb-green)]">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+
+        <!-- Back -->
+        <div class="absolute inset-0 bg-gradient-to-b from-emerald-50 to-white rounded-3xl shadow-lg p-6 text-center transform rotate-y-180 backface-hidden flex flex-col items-center justify-center">
+          <svg class="w-10 h-10 text-emerald-300 mb-3 animate-bounce" fill="currentColor"><path d="M9.17 6A4.17..."/></svg>
+          <p class="text-gray-700 italic">“Membangun Rumah Baca bukan sekadar tempat membaca, tapi rumah bagi mimpi anak-anak.”</p>
+          <span class="mt-2 text-[var(--rb-green)] text-sm">— Aditya</span>
+        </div>
+      </div>
+    </div>
+
+     <!-- 🌀 Card Example -->
+    <div class="perspective hover:scale-[1.02] transition-transform">
+      <div onclick="this.classList.toggle('rotate-y-180')" 
+           class="card-flip relative w-full h-[420px] transition-transform duration-700 preserve-3d">
+      
+        <!-- Front -->
+        <div class="absolute inset-0 bg-white border border-emerald-100 hover:border-emerald-400 rounded-3xl shadow-md flex flex-col items-center justify-center backface-hidden p-6 cursor-pointer">
+          <div class="w-44 h-44 rounded-full overflow-hidden border-4 border-emerald-50 hover:border-[var(--rb-green)] mb-4 shadow">
+            <img src="../assets/pak-aditya.jpg" alt="Aditya" class="w-full h-full object-cover">
+          </div>
+          <h4 class="text-2xl font-bold text-[var(--rb-green)]">Aditya, S.T</h4>
+          <p class="text-orange-600 text-sm font-medium">Ketua Yayasan</p>
+          <div class="flex gap-4 mt-4 text-[var(--rb-green)]">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+
+        <!-- Back -->
+        <div class="absolute inset-0 bg-gradient-to-b from-emerald-50 to-white rounded-3xl shadow-lg p-6 text-center transform rotate-y-180 backface-hidden flex flex-col items-center justify-center">
+          <svg class="w-10 h-10 text-emerald-300 mb-3 animate-bounce" fill="currentColor"><path d="M9.17 6A4.17..."/></svg>
+          <p class="text-gray-700 italic">“Membangun Rumah Baca bukan sekadar tempat membaca, tapi rumah bagi mimpi anak-anak.”</p>
+          <span class="mt-2 text-[var(--rb-green)] text-sm">— Aditya</span>
+        </div>
+      </div>
+    </div>
+
+     <!-- 🌀 Card Example -->
+    <div class="perspective hover:scale-[1.02] transition-transform">
+      <div onclick="this.classList.toggle('rotate-y-180')" 
+           class="card-flip relative w-full h-[420px] transition-transform duration-700 preserve-3d">
+      
+        <!-- Front -->
+        <div class="absolute inset-0 bg-white border border-emerald-100 hover:border-emerald-400 rounded-3xl shadow-md flex flex-col items-center justify-center backface-hidden p-6 cursor-pointer">
+          <div class="w-44 h-44 rounded-full overflow-hidden border-4 border-emerald-50 hover:border-[var(--rb-green)] mb-4 shadow">
+            <img src="../assets/pak-aditya.jpg" alt="Aditya" class="w-full h-full object-cover">
+          </div>
+          <h4 class="text-2xl font-bold text-[var(--rb-green)]">Aditya, S.T</h4>
+          <p class="text-orange-600 text-sm font-medium">Ketua Yayasan</p>
+          <div class="flex gap-4 mt-4 text-[var(--rb-green)]">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+
+        <!-- Back -->
+        <div class="absolute inset-0 bg-gradient-to-b from-emerald-50 to-white rounded-3xl shadow-lg p-6 text-center transform rotate-y-180 backface-hidden flex flex-col items-center justify-center">
+          <svg class="w-10 h-10 text-emerald-300 mb-3 animate-bounce" fill="currentColor"><path d="M9.17 6A4.17..."/></svg>
+          <p class="text-gray-700 italic">“Membangun Rumah Baca bukan sekadar tempat membaca, tapi rumah bagi mimpi anak-anak.”</p>
+          <span class="mt-2 text-[var(--rb-green)] text-sm">— Aditya</span>
+        </div>
+      </div>
+    </div>
+
+     <!-- 🌀 Card Example -->
+    <div class="perspective hover:scale-[1.02] transition-transform">
+      <div onclick="this.classList.toggle('rotate-y-180')" 
+           class="card-flip relative w-full h-[420px] transition-transform duration-700 preserve-3d">
+      
+        <!-- Front -->
+        <div class="absolute inset-0 bg-white border border-emerald-100 hover:border-emerald-400 rounded-3xl shadow-md flex flex-col items-center justify-center backface-hidden p-6 cursor-pointer">
+          <div class="w-44 h-44 rounded-full overflow-hidden border-4 border-emerald-50 hover:border-[var(--rb-green)] mb-4 shadow">
+            <img src="../assets/pak-aditya.jpg" alt="Aditya" class="w-full h-full object-cover">
+          </div>
+          <h4 class="text-2xl font-bold text-[var(--rb-green)]">Aditya, S.T</h4>
+          <p class="text-orange-600 text-sm font-medium">Ketua Yayasan</p>
+          <div class="flex gap-4 mt-4 text-[var(--rb-green)]">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+
+        <!-- Back -->
+        <div class="absolute inset-0 bg-gradient-to-b from-emerald-50 to-white rounded-3xl shadow-lg p-6 text-center transform rotate-y-180 backface-hidden flex flex-col items-center justify-center">
+          <svg class="w-10 h-10 text-emerald-300 mb-3 animate-bounce" fill="currentColor"><path d="M9.17 6A4.17..."/></svg>
+          <p class="text-gray-700 italic">“Membangun Rumah Baca bukan sekadar tempat membaca, tapi rumah bagi mimpi anak-anak.”</p>
+          <span class="mt-2 text-[var(--rb-green)] text-sm">— Aditya</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card lainnya bisa duplikasi pola ini untuk setiap pendiri -->
+  </div>
+
+  <!-- Quote Penutup -->
+  <div class="mt-20 max-w-3xl mx-auto text-center border-l-4 border-[var(--rb-green)] pl-2" data-aos="fade-up" data-aos-delay="400">
+    <svg class="w-12 h-12 text-emerald-300 mx-auto mb-4 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M9.17 6A4.17 4.17 0..."></path>
+    </svg>
+    <p class="text-xl font-medium text-gray-800 mb-2">
+      “Kami percaya perubahan besar dimulai dari langkah kecil yang dilakukan bersama di Rumah Baca.”
+    </p>
+    <span class="text-orange-500 text-sm">— Tim Rumah Baca</span>
+  </div>
+</section>
+
+
+  <?php 
+    include '../footer.php';
+?>
+
+
+  <script src="<?= $base_url ?>translate.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Inisialisasi Lucide -->
+  <script> lucide.createIcons();</script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script>
+  AOS.init({ once:true, duration:800 });
+
+  // Counter animation (cukup sekali)
+  const counters = document.querySelectorAll('.counter');
+  const speed = 150; 
+  const animateCounters = () => {
+    counters.forEach(counter => {
+      const update = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const inc = Math.ceil(target / speed);
+        if(count < target){
+          counter.innerText = count + inc;
+          setTimeout(update, 20);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      update();
+    });
+  };
+  // jalankan saat section muncul
+  if (counters.length > 0) {
+    let statsSection = counters[0].parentElement.parentElement;
+    let statsObserver = new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting) {
+        animateCounters();
+        statsObserver.disconnect();
+      }
+    }, {threshold:0.5});
+    statsObserver.observe(statsSection);
+  }
+
+  // Animasi story dengan GSAP
+  document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll("#story-slides .slide");
+  let master = gsap.timeline({ repeat: -1, defaults: { ease: "power2.inOut" } });
+
+  slides.forEach((slide, i) => {
+    master.add(() => {
+      // Pastikan semua slide reset dulu
+      gsap.set(slides, { autoAlpha: 0 });
+    });
+
+    // Animasi masuk dari kiri
+    master.fromTo(slide, 
+      { x: -200, autoAlpha: 0 }, 
+      { x: 0, autoAlpha: 1, duration: 1 }
+    );
+
+    // Diam 3 detik biar bisa dibaca
+    master.to(slide, { duration: 3 });
+
+    // Keluar ke kanan
+    master.to(slide, { x: 200, autoAlpha: 0, duration: 1 });
+  });
+
+  // Pause saat hover, lanjut lagi saat keluar
+  const container = document.getElementById("story-slides");
+  container.addEventListener("mouseenter", () => master.pause());
+  container.addEventListener("mouseleave", () => master.play());
+});
+</script>
+
+
+
+</body>
+</html>
