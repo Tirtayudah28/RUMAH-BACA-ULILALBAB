@@ -121,7 +121,7 @@ include '../config/koneksi.php';
 
     <!-- Info Kontak -->
     <div class="max-w-3xl mx-auto space-y-6" data-aos="fade-left">
-      <h2 class="text-3xl font-bold text-center bg-gradient-to-r from-green-700 to-orange-500 bg-clip-text text-transparent mb-12">Informasi Kontak</h2>
+      <h2 class="text-3xl font-bold text-center bg-gradient-to-r from-green-700 to-orange-500 bg-clip-text text-green-800 mb-12">Informasi Kontak</h2>
 
       <!-- Item -->
       <div class="bg-white shadow-md rounded-xl p-6 flex items-start gap-4 hover:shadow-lg transition">
@@ -175,7 +175,7 @@ include '../config/koneksi.php';
 <!-- Map -->
 <section class="py-16 px-6 sm:px-12 lg:px-0">
   <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg px-6 sm:px-12 py-10 text-center hover:shadow-xl transition">
-    <h2 class="text-3xl font-bold bg-gradient-to-r from-green-700 to-orange-500 bg-clip-text text-transparent mb-4">Temukan Lokasi Kami</h2>
+    <h2 class="text-3xl font-bold bg-gradient-to-r from-green-700 to-orange-500 bg-clip-text text-green-800 mb-4">Temukan Lokasi Kami</h2>
     <p class="text-gray-600 mb-8">
       No. 11, Jl. Brigjend Katamso, Kp. Baru, Kec. Medan Maimun, Kota Medan, Sumatera Utara 20158
     </p>

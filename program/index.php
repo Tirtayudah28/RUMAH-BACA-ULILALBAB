@@ -30,7 +30,7 @@
 
 <!-- Hero Section: Program Kreatif -->
 <section class="relative py-28 pb-[12rem] bg-gradient-to-r from-emerald-50 via-white to-orange-50 overflow-hidden" id="program">
-  <div class="max-w-6xl mx-auto px-6 pt-20 grid md:grid-cols-2 gap-12 items-center">
+  <div class="max-w-6xl mx-auto px-6 lg:pt-20 grid md:grid-cols-2 gap-12 items-center">
 
     <!-- Left Content -->
     <div class="relative z-10" data-aos="fade-right">

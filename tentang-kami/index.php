@@ -7,7 +7,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tentang Kami - Rumah Baca Ulil Albab</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
@@ -60,7 +60,7 @@
 ?>
 <!-- Tentang Kami - Creative Layout -->
 <section class="relative py-24 pb-[12rem] bg-green-50 bg-gradient-to-b from-emerald-50 via-white to-orange-100 overflow-x-hidden" id="tentang-kami">
-  <div class="max-w-6xl mx-auto px-6 pt-20 grid md:grid-cols-2 gap-12 items-center ">
+  <div class="max-w-6xl mx-auto px-6 lg:pt-20 grid md:grid-cols-2 gap-12 items-center ">
 
     <!-- Left Content -->
     <div data-aos="fade-right">
@@ -180,7 +180,7 @@
   
   <div class="relative max-w-5xl mx-auto px-6 text-center">
     <!-- Judul -->
-    <h2 class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-orange-500 mb-6 tracking-wide font-serif">
+    <h2 class="text-4xl sm:text-5xl font-extrabold text-green-800 bg-clip-text bg-gradient-to-r from-emerald-600 to-orange-500 mb-6 tracking-wide font-serif">
       Jejak Perjalanan Rumah Baca
     </h2>
     <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-12 italic">
@@ -259,41 +259,74 @@
     </h2>
 
     <div class="space-y-16">
-      <!-- Inklusif -->
+      <!-- Kesetaraan Akses -->
       <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
         <div class="flex-shrink-0 w-24 h-24 flex items-center justify-center rounded-full bg-emerald-100 text-[var(--rb-green)] shadow-lg">
-          <i class="fas fa-people-arrows text-3xl animate-bounce"></i>
+          <i class="fas fa-universal-access text-3xl"></i>
         </div>
         <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition">
-          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Inklusif</h3>
-          <p class="text-slate-600">Terbuka untuk semua kalangan tanpa membedakan latar belakang.</p>
+          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Kesetaraan Akses</h3>
+          <p class="text-slate-600">
+            Membuka kesempatan literasi untuk semua: anak-anak, remaja, ibu rumah tangga, hingga penyandang disabilitas.
+          </p>
         </div>
       </div>
 
-      <!-- Kolaboratif -->
+      <!-- Kolaborasi -->
       <div class="flex flex-col md:flex-row-reverse items-center gap-10" data-aos="fade-left">
         <div class="flex-shrink-0 w-24 h-24 flex items-center justify-center rounded-full bg-orange-100 text-orange-500 shadow-lg">
-          <i class="fas fa-handshake text-3xl animate-pulse"></i>
+          <i class="fas fa-handshake-angle text-3xl"></i>
         </div>
         <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition">
           <h3 class="text-2xl font-semibold mb-3 text-gray-800">Kolaboratif</h3>
-          <p class="text-slate-600">Menggerakkan relawan, komunitas, dan masyarakat sekitar.</p>
+          <p class="text-slate-600">
+            Menguatkan gerakan melalui dukungan kampus, komunitas, penerbit, perusahaan, dan pemerintah.
+          </p>
         </div>
       </div>
 
-      <!-- Berdaya -->
+      <!-- Pemberdayaan Lokal -->
       <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
         <div class="flex-shrink-0 w-24 h-24 flex items-center justify-center rounded-full bg-emerald-100 text-[var(--rb-green)] shadow-lg">
-          <i class="fas fa-lightbulb text-3xl animate-spin-slow"></i>
+          <i class="fas fa-users-cog text-3xl"></i>
         </div>
         <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition">
-          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Berdaya</h3>
-          <p class="text-slate-600">Mendorong setiap anak untuk tumbuh mandiri, kreatif, dan kritis.</p>
+          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Pemberdayaan Lokal</h3>
+          <p class="text-slate-600">
+            Mendorong masyarakat untuk aktif sebagai pengelola, pendamping, sekaligus motor penggerak literasi.
+          </p>
+        </div>
+      </div>
+
+      <!-- Circular Economy -->
+      <div class="flex flex-col md:flex-row-reverse items-center gap-10" data-aos="fade-left">
+        <div class="flex-shrink-0 w-24 h-24 flex items-center justify-center rounded-full bg-orange-100 text-orange-500 shadow-lg">
+          <i class="fas fa-recycle text-3xl"></i>
+        </div>
+        <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition">
+          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Circular Economy</h3>
+          <p class="text-slate-600">
+            Memperpanjang siklus hidup buku melalui donasi, pemanfaatan ulang, dan gerakan berbagi bacaan.
+          </p>
+        </div>
+      </div>
+
+      <!-- Transformasi Pendidikan -->
+      <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
+        <div class="flex-shrink-0 w-24 h-24 flex items-center justify-center rounded-full bg-emerald-100 text-[var(--rb-green)] shadow-lg">
+          <i class="fas fa-seedling text-3xl"></i>
+        </div>
+        <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition">
+          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Transformasi Pendidikan</h3>
+          <p class="text-slate-600">
+            Mewujudkan Generasi Emas 2045 melalui literasi, mendukung SDGs, dan amanat UU Perpustakaan.
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- Tim Pendiri Rumah Baca -->
 <section class="relative py-28 px-6 bg-[linear-gradient(to_bottom,_#f9fdfb_10%,_#ffffff_90%)] overflow-hidden">

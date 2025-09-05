@@ -51,7 +51,7 @@
       
       <!-- Bagian kiri: Logo + Carousel -->
       <div>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 -mt-4">
           <img src="<?= $base_url ?>image/logo.png" alt="Rumah Baca" class="h-16 md:h-20 w-auto object-contain">
           <div>
             <div class="font-semibold text-lg">Rumah Baca Ulil Albab</div>
