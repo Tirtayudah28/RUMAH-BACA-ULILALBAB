@@ -1,7 +1,7 @@
-<?php
+<!-- <?php
 session_start();
 include '../config/koneksi.php';
-?>
+?> -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -33,7 +33,7 @@ include '../config/koneksi.php';
 </head>
 <body>
 
-<?php include '../navbar.php'; ?>
+<div id="navbar"></div>
 
 
 <!-- Hero -->
@@ -105,7 +105,7 @@ include '../config/koneksi.php';
   <p id="notFound" class="hidden text-center text-gray-500 py-10">Tidak ada berita ditemukan.</p>
 </section>
 
-<?php include '../footer.php'; ?>
+<div id="footer"></div>
 
 <script src="<?= $base_url ?>translate.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -158,6 +158,29 @@ include '../config/koneksi.php';
     duration: 800,
     mirror: false
   });
+
+  // include navbar dan footer 
+     async function loadComponent(id, file) {
+        const res = await fetch(file);
+        const html = await res.text();
+        document.getElementById(id).innerHTML = html;
+
+        // Jalankan ulang semua <script> di file yang di-load
+        const scripts = document.getElementById(id).querySelectorAll("script");
+        scripts.forEach(oldScript => {
+          const newScript = document.createElement("script");
+          if (oldScript.src) {
+            newScript.src = oldScript.src; // untuk file eksternal
+          } else {
+            newScript.textContent = oldScript.textContent; // untuk inline script
+          }
+          document.body.appendChild(newScript);
+        });
+      }
+    document.addEventListener("DOMContentLoaded", () => {
+      loadComponent("navbar", "../navbar.html");
+      loadComponent("footer", "../footer.html");
+    });
 </script>
 
 </body>

@@ -1,6 +1,3 @@
-<?php 
-    include 'config/koneksi.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +49,7 @@
       <!-- Bagian kiri: Logo + Carousel -->
       <div>
         <div class="flex items-center gap-3 -mt-4">
-          <img src="<?= $base_url ?>image/logo.png" alt="Rumah Baca" class="h-16 md:h-20 w-auto object-contain">
+          <img src="../image/logo.png" alt="Rumah Baca" class="h-16 md:h-20 w-auto object-contain">
           <div>
             <div class="font-semibold text-lg">Rumah Baca Ulil Albab</div>
             <div class="text-sm text-emerald-100">Membangun generasi literasi.</div>
@@ -63,19 +60,19 @@
         <div id="indicators-carousel" class="relative w-full max-w-sm mt-4" data-carousel="static">
           <div class="relative aspect-video overflow-hidden rounded-lg">
             <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-              <img src="<?= $base_url ?>image/tentang-kami.jpg" class="block w-full h-full object-cover" alt="...">
+              <img src="../image/tentang-kami.jpg" class="block w-full h-full object-cover" alt="...">
             </div>
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="<?= $base_url ?>image/edukasi.jpg" class="block w-full h-full object-cover" alt="...">
+              <img src="../image/edukasi.jpg" class="block w-full h-full object-cover" alt="...">
             </div>
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="<?= $base_url ?>image/donation.jpg" class="block w-full h-full object-cover" alt="...">
+              <img src="../image/donation.jpg" class="block w-full h-full object-cover" alt="...">
             </div>
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="<?= $base_url ?>image/event.jpg" class="block w-full h-full object-cover" alt="...">
+              <img src="../image/event.jpg" class="block w-full h-full object-cover" alt="...">
             </div>
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="<?= $base_url ?>image/donasi-picture.jpg" class="block w-full h-full object-cover" alt="...">
+              <img src="../image/donasi-picture.jpg" class="block w-full h-full object-cover" alt="...">
             </div>
           </div>
 
@@ -148,6 +145,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+<script src="N&F.js"></script>
     <script>
     // init AOS
     AOS.init({ duration: 700, once: true });

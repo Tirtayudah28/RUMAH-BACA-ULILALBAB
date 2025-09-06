@@ -48,16 +48,16 @@ include 'config/koneksi.php';
         <!-- Logo -->
         <a href="../beranda/index.php" class="flex items-center gap-3 md:gap-4">
           <!-- ✅ logo responsive -->
-          <img src="<?= $base_url ?>image/logo.png" 
+          <img src="../image/logo.png" 
                alt="Rumah Baca" 
                class="h-12 sm:h-16 md:h-16 w-auto max-w-[150px] object-contain">
         </a>
 
         <!-- Menu Desktop -->
         <nav class="hidden lg:flex gap-6 items-center font-bold text-gray-400 text-sm">
-          <a href="<?= $base_url ?>index.php" class="nav-link hover:text-green-600 mr-[-0.2rem]" data-key="home">Beranda</a>
-          <a href="<?= $base_url ?>tentang-kami" class="nav-link hover:text-green-600" data-key="about">Tentang Kami</a>
-          <a href="<?= $base_url ?>program" class="nav-link hover:text-green-600" data-key="program">Program</a>
+          <a href="../index.html" class="nav-link hover:text-green-600 mr-[-0.2rem]" data-key="home">Beranda</a>
+          <a href="../tentang-kami" class="nav-link hover:text-green-600" data-key="about">Tentang Kami</a>
+          <a href="../program" class="nav-link hover:text-green-600" data-key="program">Program</a>
 
            <!-- Dropdown Media -->
           <div class="relative">
@@ -68,15 +68,15 @@ include 'config/koneksi.php';
               </svg>
             </button>
             <div id="mediaDropdown" class="absolute hidden bg-white shadow-lg mt-2 rounded-lg py-2 w-40">
-              <a href="<?= $base_url ?>berita" class="block px-4 py-2 hover:bg-green-100 hover:text-green-600" data-key="news">Berita</a>
-              <a href="<?= $base_url ?>publikasi" class="block px-4 py-2 hover:bg-green-100 hover:text-green-600" data-key="publication">Publikasi</a>
-              <a href="<?= $base_url ?>video" class="block px-4 py-2 hover:bg-green-100 hover:text-green-600" data-key="watch">video</a>
+              <a href="../berita" class="block px-4 py-2 hover:bg-green-100 hover:text-green-600" data-key="news">Berita</a>
+              <a href="../publikasi" class="block px-4 py-2 hover:bg-green-100 hover:text-green-600" data-key="publication">Publikasi</a>
+              <a href="../video" class="block px-4 py-2 hover:bg-green-100 hover:text-green-600" data-key="watch">video</a>
             </div>
           </div>
 
-          <a href="<?= $base_url ?>pojok-baca" class="nav-link hover:text-green-600" data-key="pojok">Pojok Baca</a>
-          <a href="<?= $base_url ?>hubungi-kami" class="nav-link hover:text-green-600" data-key="contact">Hubungi Kami</a>
-          <a href="<?= $base_url ?>donasi" class="btn-primary rounded-lg px-4 py-2 font-semibold shadow-soft" data-key="donate">Donasi</a>
+          <a href="../pojok-baca" class="nav-link hover:text-green-600" data-key="pojok">Pojok Baca</a>
+          <a href="../hubungi-kami" class="nav-link hover:text-green-600" data-key="contact">Hubungi Kami</a>
+          <a href="../donasi" class="btn-primary rounded-lg px-4 py-2 font-semibold shadow-soft" data-key="donate">Donasi</a>
 
           <!-- Bahasa -->
            <button id="languageDropdownButton" data-dropdown-toggle="language-dropdown" class="nav-link hover:text-green-600 flex items-center" type="button">Bahasa<svg class="w-2.5 h-2.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -117,23 +117,23 @@ include 'config/koneksi.php';
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="fixed top-0 right-0 w-[80%] max-w-xs h-full bg-white shadow-lg hidden translate-x-full transition-transform duration-300 flex-col p-6 z-40">
       <button id="closeMenu" class="self-end mb-6 text-2xl">✖</button>
-      <a href="<?= $base_url ?>index.php" class="block py-2 font-semibold" data-key="home">Beranda</a>
-      <a href="<?= $base_url ?>tentang-kami" class="block py-2 font-semibold" data-key="about">Tentang Kami</a>
-      <a href="<?= $base_url ?>program" class="block py-2 font-semibold" data-key="program">Program</a>
+      <a href="../index.html" class="block py-2 font-semibold" data-key="home">Beranda</a>
+      <a href="../tentang-kami" class="block py-2 font-semibold" data-key="about">Tentang Kami</a>
+      <a href="../program" class="block py-2 font-semibold" data-key="program">Program</a>
       <details class="py-2">
         <summary class="cursor-pointer font-semibold">Media</summary>
-        <a href="<?= $base_url ?>berita" class="block py-2 pl-4" data-key="news">Berita</a>
-        <a href="<?= $base_url ?>publikasi" class="block py-2 pl-4" data-key="publication">Publikasi</a>
-        <a href="<?= $base_url ?>video" class="block py-2 pl-4" data-key="watch">video</a>
+        <a href="../berita" class="block py-2 pl-4" data-key="news">Berita</a>
+        <a href="../publikasi" class="block py-2 pl-4" data-key="publication">Publikasi</a>
+        <a href="../video" class="block py-2 pl-4" data-key="watch">video</a>
       </details>
-      <a href="<?= $base_url ?>pojok-baca" class="block py-2 font-semibold" data-key="pojok">Pojok Baca</a>
-      <a href="<?= $base_url ?>hubungi-kami" class="block py-2 font-semibold" data-key="contact">Hubungi Kami</a>
+      <a href="../pojok-baca" class="block py-2 font-semibold" data-key="pojok">Pojok Baca</a>
+      <a href="../hubungi-kami" class="block py-2 font-semibold" data-key="contact">Hubungi Kami</a>
       <div class="mt-4">
         <p class="text-sm text-gray-500 mb-2">Pilih Bahasa:</p>
         <a href="?lang=id" class="block py-1">🇮🇩 Indonesia</a>
         <a href="?lang=en" class="block py-1">🇬🇧 English</a>
       </div>
-      <a href="<?= $base_url ?>donasi" class="block btn-primary rounded-lg px-4 py-2 mt-6 text-center text-orange-600 font-bold" data-key="donate">Donasi</a>
+      <a href="../donasi" class="block btn-primary rounded-lg px-4 py-2 mt-6 text-center text-orange-600 font-bold" data-key="donate">Donasi</a>
     </div>
   </header>
 
@@ -162,7 +162,8 @@ include 'config/koneksi.php';
   </div>
 
 
-  <script src="translate.js"></script>
+  <script src="main.js" defer></script> 
+  <script src="translate.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
  <!-- === perbaikan dropdown bahasa dan hamburger === -->
 <script>
