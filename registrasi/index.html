@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Pojok Baca</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; color:#0f172a; }
+    .btn-primary{ background:linear-gradient(90deg,#f97316,#fb923c); color:#fff; }
+    .btn-primary:hover{ filter:brightness(.95); }
+    .hover-green:hover{ color:#0ea5a0; }
+    .hover-bg-green:hover{ background:rgba(14,165,160,.08); }
+  </style>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen px-4">
+
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 relative">
+    <!-- Logo -->
+    <div class="flex justify-center mb-4">
+      <img src="../image/logo.png" alt="Rumah Baca" class="h-14 object-contain">
+    </div>
+    
+    <!-- Title -->
+    <h2 class="text-2xl font-bold mb-1 text-[#0ea5a0] text-center">Create an Account</h2>
+    <p class="text-sm text-gray-600 mb-6 text-center">Daftar untuk bergabung di Pojok Baca</p>
+
+    <!-- Social Buttons -->
+    <div class="grid grid-cols-3 gap-3 mb-5">
+      <button class="border rounded-lg py-2 font-semibold hover-bg-green">G</button>
+      <button class="border rounded-lg py-2 font-semibold hover-bg-green">f</button>
+      <button class="border rounded-lg py-2 font-semibold hover-bg-green"></button>
+    </div>
+
+    <div class="flex items-center my-4">
+      <hr class="flex-1 border-gray-300">
+      <span class="px-3 text-gray-400 text-sm">Or</span>
+      <hr class="flex-1 border-gray-300">
+    </div>
+
+    <!-- Form -->
+    <form action="#" method="POST" class="space-y-3">
+      <input type="text" name="username" placeholder="Username" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-300">
+      <input type="text" name="name" placeholder="Nama Lengkap" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-300">
+      <input type="email" name="email" placeholder="Email address" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-300">
+      <input type="password" name="password" placeholder="Password" required class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-300">
+
+      <button type="submit" class="w-full btn-primary py-2 rounded-lg font-bold text-neutral-50">Register</button>
+    </form>
+
+    <!-- Login Link -->
+    <p class="text-xs mt-4 text-gray-500 text-center">
+      Sudah punya akun? <a href="../index.html" class="text-[#f97316] font-semibold">Login</a>
+    </p>
+
+    <p class="text-xs mt-3 text-gray-400 text-center">
+      Dengan mendaftar, saya setuju dengan <a href="#" class="text-[#f97316]">terms of use</a> dan <a href="#" class="text-[#f97316]">privacy policy</a>.
+    </p>
+  </div>
+
+</body>
+</html>
