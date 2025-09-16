@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin</title>
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts & libs -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .smooth-transition { transition: all .25s cubic-bezier(.2,.9,.3,1); }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+  <div class="px-3 py-3 lg:px-5 lg:pl-3">
+    <div class="flex items-center justify-between px-6">
+      <div class="flex items-center">
+        <!-- Toggle Sidebar -->
+        <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
+          type="button"
+          class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 
+                 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 
+                 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+          <span class="sr-only">Open sidebar</span>
+          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+            <path clip-rule="evenodd" fill-rule="evenodd"
+              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 
+                 0 010 1.5H2.75A.75.75 0 012 4.75zm0 
+                 10.5a.75.75 0 01.75-.75h7.5a.75.75 
+                 0 010 1.5h-7.5a.75.75 
+                 0 01-.75-.75zM2 10a.75.75 
+                 0 01.75-.75h14.5a.75.75 
+                 0 010 1.5H2.75A.75.75 
+                 0 012 10z">
+            </path>
+          </svg>
+        </button>
+        <!-- Logo -->
+        <a href="#" class="flex ms-2 md:me-24">
+          <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="Logo" />
+          <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Dashboard</span>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <!-- Profile Dropdown -->
+        <div class="flex items-center ms-3">
+          <div>
+            <button type="button" id="adminName"
+              class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              data-dropdown-toggle="dropdown-user">
+              <span class="sr-only">Admin Menu</span>
+              <img class="w-8 h-8 rounded-full"
+                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+            </button>
+          </div>
+          <div id="dropdown-user"
+            class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 
+                   rounded-sm shadow-sm dark:bg-gray-700 dark:divide-gray-600">
+            <div class="px-4 py-3">
+              <p class="text-sm font-semibold text-gray-900 dark:text-white">Neil Sims</p>
+              <p class="text-sm text-gray-500 truncate dark:text-gray-300">neil.sims@flowbite.com</p>
+            </div>
+            <ul class="py-1">
+              <li><a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Dashboard</a></li>
+              <li><a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Settings</a></li>
+              <li><a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Earnings</a></li>
+              <li><a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- SIDEBAR -->
+<aside id="logo-sidebar"
+  class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform 
+         -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 
+         dark:bg-gray-800 dark:border-gray-700"
+  aria-label="Sidebar">
+  <div class="h-full px-3 pb-4 overflow-y-auto">
+    <ul class="space-y-2 font-medium">
+      <li>
+        <a href="#"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+          <i data-feather="home" class="w-5 h-5"></i>
+          <span class="ms-3">Dashboard</span>
+        </a>
+      </li>
+      <li class="mt-4 text-xs uppercase font-semibold text-gray-400">Buku</li>
+      <li><a href="#" class="block px-6 py-2 rounded-lg hover:bg-emerald-50">Semua Buku</a></li>
+      <li><a href="#" class="block px-6 py-2 rounded-lg hover:bg-emerald-50">Tambah Buku</a></li>
+      <li><a href="#" class="block px-6 py-2 rounded-lg hover:bg-emerald-50">Kategori Buku</a></li>
+      <li class="mt-4 text-xs uppercase font-semibold text-gray-400">Berita & Artikel</li>
+      <li><a href="#" class="block px-6 py-2 rounded-lg hover:bg-emerald-50">Semua Berita</a></li>
+      <li><a href="#" class="block px-6 py-2 rounded-lg hover:bg-emerald-50">Tambah Berita</a></li>
+      <li><a href="#" class="block px-6 py-2 rounded-lg hover:bg-emerald-50">Kategori Berita</a></li>
+      <li class="mt-4 text-xs uppercase font-semibold text-gray-400">Media</li>
+      <li><a href="#" class="block px-6 py-2 rounded-lg hover:bg-emerald-50">Galeri Foto</a></li>
+      <li><a href="#" class="block px-6 py-2 rounded-lg hover:bg-emerald-50">Konten Video</a></li>
+      <li class="mt-4 text-xs uppercase font-semibold text-gray-400">Donasi</li>
+      <li><a href="#" class="block px-6 py-2 rounded-lg hover:bg-emerald-50">Data Donatur</a></li>
+      <li><a href="#" class="block px-6 py-2 rounded-lg hover:bg-emerald-50">Riwayat Donasi</a></li>
+      <li><a href="#" class="block px-6 py-2 rounded-lg hover:bg-emerald-50">Tambah Rekening</a></li>
+      <li class="mt-4 text-xs uppercase font-semibold text-gray-400 dark:text-gray-500">Pengguna</li>
+      <li><a href="#" class="block px-6 py-2 rounded hover:bg-emerald-50 dark:hover:bg-emerald-900">Daftar Pengguna</a></li>
+      <li><a href="#" class="block px-6 py-2 rounded hover:bg-emerald-50 dark:hover:bg-emerald-900">Role & Hak Akses</a></li>
+      <li class="mt-4 text-xs uppercase font-semibold text-gray-400 dark:text-gray-500">Pengaturan</li>
+      <li><a href="#" class="block px-6 py-2 rounded hover:bg-emerald-50 dark:hover:bg-emerald-900">Profil Admin</a></li>
+      <li><a href="#" class="block px-6 py-2 rounded hover:bg-emerald-50 dark:hover:bg-emerald-900">Sistem & Konfigurasi</a></li>
+    </ul>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="p-6 sm:ml-64 pt-20">
+  <!-- Statistik Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-6">
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm">
+      <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Buku</p>
+      <p class="text-2xl font-bold text-emerald-600 mt-2">1,250</p>
+    </div>
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm">
+      <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Berita</p>
+      <p class="text-2xl font-bold text-blue-600 mt-2">320</p>
+    </div>
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm">
+      <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Donasi</p>
+      <p class="text-2xl font-bold text-yellow-500 mt-2">Rp 25 jt</p>
+    </div>
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm">
+      <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Pengguna</p>
+      <p class="text-2xl font-bold text-red-500 mt-2">450</p>
+    </div>
+  </div>
+
+  <!-- Grafik -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+      <h2 class="text-lg font-semibold mb-4">Grafik Donasi</h2>
+      <canvas id="donasiChart" class="w-full h-64"></canvas>
+    </div>
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+      <h2 class="text-lg font-semibold mb-4">Koleksi Buku</h2>
+      <canvas id="bukuChart" class="w-full h-64"></canvas>
+    </div>
+  </div>
+</main>
+
+<!-- EXISTING SCRIPTS -->
+<script src="../js/auth.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+  feather.replace();
+</script>
+
+<script>
+  // Grafik Donasi
+  new Chart(document.getElementById('donasiChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+      datasets: [{
+        label: 'Donasi (Rp)',
+        data: [5000000, 7000000, 8000000, 6500000, 9000000, 7500000],
+        backgroundColor: 'rgba(16, 185, 129, 0.7)'
+      }]
+    }
+  });
+
+  // Grafik Buku
+  new Chart(document.getElementById('bukuChart'), {
+    type: 'pie',
+    data: {
+      labels: ['Fiksi', 'Non-Fiksi', 'Agama', 'Sains', 'Anak-anak'],
+      datasets: [{
+        data: [40, 25, 15, 10, 10],
+        backgroundColor: [
+          'rgba(16, 185, 129, 0.7)',
+          'rgba(59, 130, 246, 0.7)',
+          'rgba(239, 68, 68, 0.7)',
+          'rgba(251, 191, 36, 0.7)',
+          'rgba(139, 92, 246, 0.7)'
+        ]
+      }]
+    }
+  });
+
+  // Auth
+  rbcaAuth.checkAuth();
+  async function loadProfile() {
+    try {
+      const profile = await rbcaAuth.getProtectedData();
+      document.getElementById("adminName").textContent = profile.name || profile.email || "Admin";
+    } catch (err) {
+      console.error(err);
+      rbcaAuth.logout();
+    }
+  }
+  loadProfile();
+</script>
+
+</body>
+</html>
