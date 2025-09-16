@@ -44,7 +44,7 @@ function redirectToLogin() {
   }
 }
 function redirectToDashboard() {
-  window.location.href = "dashboard-admin/index.html";
+  window.location.href = "../dashboard-admin/index.html";
 }
 
 // Cek apakah sudah login
