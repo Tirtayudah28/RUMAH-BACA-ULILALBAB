@@ -1,46 +1,355 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Login Admin</title>
-  <style>
-    body {
-  font-family: Arial, sans-serif;
-  background: #f0f2f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.login-container {
-  background: white;
-  padding: 20px 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-input, button {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-}
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Rumah Baca Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(120deg, #f0fdf4 0%, #dcfce7 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dark-mode {
+            background: linear-gradient(120deg, #0f172a 0%, #1e293b 100%) !important;
+        }
+        
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-rumah-baca {
+            font-weight: 700;
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #059669 0%, #047857 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .input-focus:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+        
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .password-toggle {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .password-toggle:hover {
+            color: #10b981;
+        }
+    </style>
 </head>
-<body>
-   <div class="login-container">
-    <h3>Login Admin</h3>
-    <form id="loginForm" autocomplete="off">
-      <input type="email" id="email" placeholder="Email" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
-    <div class="hint">
-      (Demo mode) Test credentials: <strong>admin@example.com / admin123</strong>
+<body class="p-4">
+    <div class="absolute top-4 right-4">
+        <button id="theme-toggle" class="p-2 rounded-lg bg-white text-gray-700 dark:bg-gray-800 dark:text-white shadow-md">
+            <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="CurrentColor" viewBox="0 0 20 20">
+                <path d="M10 2a1 1 0 011 1v1a1 1 0 01-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 01-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+        </button>
     </div>
-  </div>
 
-  <script src="../js/auth.js"></script>
+    <div class="w-full max-w-md">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 card-shadow">
+            <div class="text-center mb-8">
+                <div class="flex justify-center mb-4">
+                    <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                </div>
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-white">
+                    <span class="logo-rumah-baca">Rumah Baca</span> Admin
+                </h1>
+                <p class="text-gray-600 dark:text-gray-300 mt-2">Masuk ke dashboard administrator</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="mb-6">
+                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white input-focus" placeholder="admin@rumahbaca.org" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                    <div class="relative">
+                        <input type="password" id="password" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white input-focus" placeholder="Masukkan password" required>
+                        <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 dark:text-gray-400 password-toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="remember" class="w-4 h-4 text-emerald-600 bg-gray-100 rounded border-gray-300 focus:ring-emerald-500 dark:focus:ring-emerald-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="remember" class="ml-2 text-sm text-gray-700 dark:text-gray-300">Ingat saya</label>
+                    </div>
+
+                    <a href="#" class="text-sm text-emerald-600 dark:text-emerald-400 hover:underline">Lupa password?</a>
+                </div>
+
+                <button type="submit" class="w-full py-3 px-4 rounded-lg text-white font-medium btn-primary flex items-center justify-center">
+                    <span id="button-text">Masuk</span>
+                    <div id="spinner" class="spinner hidden"></div>
+                </button>
+            </form>
+
+            <div id="error-message" class="mt-4 p-3 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg hidden"></div>
+
+            <div class="mt-8 text-center">
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    © 2023 Rumah Baca. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // CONFIG - API endpoints
+        const API_LOGIN = "https://rbca-api.vercel.app/api/auth/login";
+        const STORAGE_KEY = "rbca_auth";
+
+        // Fungsi untuk menyimpan token
+        function storeToken(token, ttlSeconds = 3600) {
+            const payload = {
+                token,
+                expires: Date.now() + ttlSeconds * 1000
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+            console.log("Token disimpan:", payload);
+        }
+
+        // Fungsi untuk membaca token
+        function readToken() {
+            try {
+                const s = localStorage.getItem(STORAGE_KEY);
+                if (!s) return null;
+                const obj = JSON.parse(s);
+                if (!obj.token || !obj.expires) return null;
+                if (Date.now() > obj.expires) {
+                    localStorage.removeItem(STORAGE_KEY);
+                    return null;
+                }
+                return obj.token;
+            } catch {
+                return null;
+            }
+        }
+
+        // Fungsi untuk toggle dark mode
+        function initTheme() {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+            // Cek preferensi tema yang disimpan
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                themeToggleLightIcon.classList.remove('hidden');
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark-mode');
+            } else {
+                themeToggleDarkIcon.classList.remove('hidden');
+                document.documentElement.classList.remove('dark');
+                document.body.classList.remove('dark-mode');
+            }
+
+            themeToggleBtn.addEventListener('click', function() {
+                themeToggleDarkIcon.classList.toggle('hidden');
+                themeToggleLightIcon.classList.toggle('hidden');
+
+                if (localStorage.getItem('color-theme')) {
+                    if (localStorage.getItem('color-theme') === 'light') {
+                        document.documentElement.classList.add('dark');
+                        document.body.classList.add('dark-mode');
+                        localStorage.setItem('color-theme', 'dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        document.body.classList.remove('dark-mode');
+                        localStorage.setItem('color-theme', 'light');
+                    }
+                } else {
+                    if (document.documentElement.classList.contains('dark')) {
+                        document.documentElement.classList.remove('dark');
+                        document.body.classList.remove('dark-mode');
+                        localStorage.setItem('color-theme', 'light');
+                    } else {
+                        document.documentElement.classList.add('dark');
+                        document.body.classList.add('dark-mode');
+                        localStorage.setItem('color-theme', 'dark');
+                    }
+                }
+            });
+        }
+
+        // Fungsi untuk toggle password visibility
+        function initPasswordToggle() {
+            const togglePassword = document.getElementById('togglePassword');
+            const password = document.getElementById('password');
+            
+            togglePassword.addEventListener('click', function() {
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                
+                // Ganti icon
+                if (type === 'text') {
+                    togglePassword.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                        </svg>
+                    `;
+                } else {
+                    togglePassword.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                    `;
+                }
+            });
+        }
+
+        // Fungsi untuk menangani login
+        async function handleLogin(email, password) {
+            try {
+                console.log("Mencoba login dengan:", email);
+                
+                const res = await fetch(API_LOGIN, {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await res.json();
+                console.log("Response dari API:", data);
+
+                // Cek beberapa kemungkinan format token
+                const token = data.token || data.accessToken || data?.data?.token;
+
+                if (res.ok && token) {
+                    console.log("Login berhasil, token:", token);
+                    storeToken(token, 3600); // simpan 1 jam
+                    
+                    // Redirect ke dashboard
+                    window.location.href = "../dashboard-admin/index.html";
+                } else {
+                    // Tampilkan error
+                    const errorMessage = data.message || "Periksa email dan password Anda";
+                    throw new Error(errorMessage);
+                }
+            } catch (err) {
+                console.error("Login error:", err);
+                throw err;
+            }
+        }
+
+        // Inisialisasi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize theme
+            initTheme();
+            
+            // Initialize password toggle
+            initPasswordToggle();
+            
+            // Cek jika sudah login
+            const token = readToken();
+            if (token) {
+                console.log("Token ditemukan, redirect ke dashboard");
+                window.location.href = "../dashboard-admin/index.html";
+                return;
+            }
+            
+            // Handle form submission
+            document.getElementById('loginForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                if (!email || !password) {
+                    showError("Email dan password harus diisi");
+                    return;
+                }
+                
+                // Tampilkan spinner
+                document.getElementById('button-text').classList.add('hidden');
+                document.getElementById('spinner').classList.remove('hidden');
+                document.getElementById('error-message').classList.add('hidden');
+                
+                try {
+                    await handleLogin(email, password);
+                } catch (err) {
+                    showError(err.message || "Terjadi kesalahan saat login");
+                    
+                    // Sembunyikan spinner
+                    document.getElementById('button-text').classList.remove('hidden');
+                    document.getElementById('spinner').classList.add('hidden');
+                }
+            });
+            
+            // Isi email jika ada yang disimpan
+            const savedEmail = localStorage.getItem('adminEmail');
+            if (savedEmail) {
+                document.getElementById('email').value = savedEmail;
+                document.getElementById('remember').checked = true;
+            }
+        });
+
+        // Fungsi untuk menampilkan error
+        function showError(message) {
+            const errorElement = document.getElementById('error-message');
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+            
+            // Auto-hide error after 5 seconds
+            setTimeout(() => {
+                errorElement.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
 </body>
 </html>

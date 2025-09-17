@@ -38,7 +38,7 @@ function clearToken() {
 // Redirect helper
 function redirectToLogin() {
   if (window.location.pathname.includes("/dashboard-admin/")) {
-    window.location.href = "../login.html";
+    window.location.href = "../login/login.html";
   } else {
     window.location.href = "login.html";
   }
