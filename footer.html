@@ -1,214 +1,407 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer</title>
-     <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- AOS (Animate on Scroll) -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-
-  <!-- Icons (Heroicons) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-  <style>
-    :root {
-      --rb-green: #15803d;
-      --rb-orange: #f97316;
-    }
-    .animate-spin-slow {
-        animation: spin 6s linear infinite;
-    }
-
-      .perspective {
-        perspective: 1000px;
-    }
-    .preserve-3d {
-        transform-style: preserve-3d;
-    }
-    .rotate-y-180 {
-        transform: rotateY(180deg);
-    }
-    .backface-hidden {
-        backface-visibility: hidden;
-    }
-  </style>
+    <title>Footer - Rumah Baca Ulil Albab</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    
+    <!-- Flowbite (for carousel) -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            --rb-green: #15803d;
+            --rb-orange: #f97316;
+            --rb-green-light: #dcfce7;
+            --rb-orange-light: #ffedd5;
+        }
+        
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+        }
+        
+        .footer-gradient {
+            background: linear-gradient(135deg, var(--rb-green) 0%, #14532d 100%);
+        }
+        
+        .chapter-card {
+            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+        
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        .footer-link {
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rb-orange);
+            transition: width 0.3s ease;
+        }
+        
+        .footer-link:hover::after {
+            width: 100%;
+        }
+        
+        .carousel-control {
+            background: rgba(255, 255, 255, 0.2) !important;
+            backdrop-filter: blur(10px);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-control:hover {
+            background: rgba(255, 255, 255, 0.3) !important;
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
 
 <!-- FOOTER -->
-<footer class="bg-[var(--rb-green)] text-white pt-12 pb-8">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-    
-    <!-- Grid utama -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-      
-      <!-- Bagian kiri: Logo + Carousel -->
-      <div>
-        <div class="flex items-center gap-3 -mt-4">
-          <img src="../image/logo.png" alt="Rumah Baca" class="h-16 md:h-20 w-auto object-contain">
-          <div>
-            <div class="font-semibold text-lg">Rumah Baca Ulil Albab</div>
-            <div class="text-sm text-emerald-100">Membangun generasi literasi.</div>
+<footer class="footer-gradient text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-12">
+            
+            <!-- Brand & Description -->
+            <div class="lg:col-span-1">
+                <div class="flex items-center gap-4 mb-6">
+                    <img src="../image/logo.png" alt="Rumah Baca Ulil Albab" class="h-16 w-auto object-contain">
+                    <div>
+                        <h2 class="text-2xl font-bold">Rumah Baca Ulil Albab</h2>
+                        <p class="text-emerald-100 text-sm mt-1">Membangun Generasi Literasi Indonesia</p>
+                    </div>
+                </div>
+                
+                <p class="text-emerald-100 mb-6 leading-relaxed">
+                    Berkomitmen untuk menyebarkan ilmu pengetahuan melalui program literasi yang berkelanjutan 
+                    dan menjangkau seluruh lapisan masyarakat Indonesia.
+                </p>
+                
+                <!-- Social Media -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-4 text-white">Ikuti Kami</h3>
+                    <div class="flex gap-3">
+                        <a href="#" class="social-icon w-10 h-10 bg-white/10 rounded-full hover:bg-white/20">
+                            <i class="bi bi-youtube text-xl text-red-500"></i>
+                        </a>
+                        <a href="#" class="social-icon w-10 h-10 bg-white/10 rounded-full hover:bg-white/20">
+                            <i class="bi bi-instagram text-xl text-pink-400"></i>
+                        </a>
+                        <a href="#" class="social-icon w-10 h-10 bg-white/10 rounded-full hover:bg-white/20">
+                            <i class="bi bi-facebook text-xl text-blue-500"></i>
+                        </a>
+                        <a href="#" class="social-icon w-10 h-10 bg-white/10 rounded-full hover:bg-white/20">
+                            <i class="bi bi-tiktok text-xl text-black"></i>
+                        </a>
+                        <a href="#" class="social-icon w-10 h-10 bg-white/10 rounded-full hover:bg-white/20">
+                            <i class="bi bi-twitter-x text-xl text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+           <!-- Chapter Carousel -->
+          <div class="lg:col-span-2">
+              <h3 class="text-lg font-semibold mb-6 text-white flex items-center">
+                  <i class="bi bi-geo-alt-fill mr-2 text-orange-300"></i>
+                  Cabang & Chapter Kami
+              </h3>
+              
+              <div id="chapterCarousel" class="relative" data-carousel="static">
+                  <!-- Carousel wrapper -->
+                  <div class="relative h-72 md:h-80 overflow-hidden rounded-xl">
+                      <!-- Item 1 - Jakarta -->
+                      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                          <div class="relative h-full w-full">
+                              <img src="../image/anak_membaca.jpg" 
+                                  alt="Rumah Baca Jakarta Pusat" 
+                                  class="absolute inset-0 w-full h-full object-cover">
+                              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                              <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                  <div class="flex items-center mb-2">
+                                      <div class="bg-orange-500/90 p-2 rounded-lg mr-3">
+                                          <i class="bi bi-building text-white text-xl"></i>
+                                      </div>
+                                      <div>
+                                          <h4 class="font-bold text-xl">Jakarta Pusat</h4>
+                                          <p class="text-orange-200 text-sm">Chapter Pertama</p>
+                                      </div>
+                                  </div>
+                                  <p class="text-sm mb-3 line-clamp-2">
+                                      Jl. Menteng Raya No. 25, Jakarta Pusat. Telah melayani lebih dari 5.000 pembaca sejak 2018.
+                                  </p>
+                                  <div class="flex items-center text-xs text-white/80">
+                                      <i class="bi bi-people-fill mr-1"></i> 1.200+ Anggota
+                                      <i class="bi bi-book-half ml-3 mr-1"></i> 3.500+ Buku
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <!-- Item 2 - Bandung -->
+                      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                          <div class="relative h-full w-full">
+                              <img src="image/donasi-picture.jpg" 
+                                  alt="Rumah Baca Bandung" 
+                                  class="absolute inset-0 w-full h-full object-cover">
+                              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                              <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                  <div class="flex items-center mb-2">
+                                      <div class="bg-orange-500/90 p-2 rounded-lg mr-3">
+                                          <i class="bi bi-building text-white text-xl"></i>
+                                      </div>
+                                      <div>
+                                          <h4 class="font-bold text-xl">Bandung</h4>
+                                          <p class="text-orange-200 text-sm">Chapter Jawa Barat</p>
+                                      </div>
+                                  </div>
+                                  <p class="text-sm mb-3 line-clamp-2">
+                                      Jl. Dago No. 78, Bandung. Fokus pada literasi digital dan sains untuk remaja.
+                                  </p>
+                                  <div class="flex items-center text-xs text-white/80">
+                                      <i class="bi bi-people-fill mr-1"></i> 850+ Anggota
+                                      <i class="bi bi-book-half ml-3 mr-1"></i> 2.200+ Buku
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <!-- Item 3 - Yogyakarta -->
+                      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                          <div class="relative h-full w-full">
+                              <img src="../image/edukasi.jpg" 
+                                  alt="Rumah Baca Yogyakarta" 
+                                  class="absolute inset-0 w-full h-full object-cover">
+                              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                              <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                  <div class="flex items-center mb-2">
+                                      <div class="bg-orange-500/90 p-2 rounded-lg mr-3">
+                                          <i class="bi bi-building text-white text-xl"></i>
+                                      </div>
+                                      <div>
+                                          <h4 class="font-bold text-xl">Yogyakarta</h4>
+                                          <p class="text-orange-200 text-sm">Chapter Edukasi</p>
+                                      </div>
+                                  </div>
+                                  <p class="text-sm mb-3 line-clamp-2">
+                                      Jl. Malioboro No. 123, Yogyakarta. Khusus mengembangkan literasi budaya dan sejarah Indonesia.
+                                  </p>
+                                  <div class="flex items-center text-xs text-white/80">
+                                      <i class="bi bi-people-fill mr-1"></i> 1.500+ Anggota
+                                      <i class="bi bi-book-half ml-3 mr-1"></i> 4.000+ Buku
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <!-- Item 4 - Surabaya -->
+                      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                          <div class="relative h-full w-full">
+                              <img src="../image/event.jpg" 
+                                  alt="Rumah Baca Surabaya" 
+                                  class="absolute inset-0 w-full h-full object-cover">
+                              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                              <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                  <div class="flex items-center mb-2">
+                                      <div class="bg-orange-500/90 p-2 rounded-lg mr-3">
+                                          <i class="bi bi-building text-white text-xl"></i>
+                                      </div>
+                                      <div>
+                                          <h4 class="font-bold text-xl">Surabaya</h4>
+                                          <p class="text-orange-200 text-sm">Chapter Timur</p>
+                                      </div>
+                                  </div>
+                                  <p class="text-sm mb-3 line-clamp-2">
+                                      Jl. Tunjungan No. 45, Surabaya. Memiliki program maritim dan kelautan untuk edukasi pesisir.
+                                  </p>
+                                  <div class="flex items-center text-xs text-white/80">
+                                      <i class="bi bi-people-fill mr-1"></i> 950+ Anggota
+                                      <i class="bi bi-book-half ml-3 mr-1"></i> 2.800+ Buku
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <!-- Item 5 - Medan -->
+                      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                          <div class="relative h-full w-full">
+                              <img src="../image/kreatifitas.jpg" 
+                                  alt="Rumah Baca Medan" 
+                                  class="absolute inset-0 w-full h-full object-cover">
+                              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                              <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                  <div class="flex items-center mb-2">
+                                      <div class="bg-orange-500/90 p-2 rounded-lg mr-3">
+                                          <i class="bi bi-building text-white text-xl"></i>
+                                      </div>
+                                      <div>
+                                          <h4 class="font-bold text-xl">Medan</h4>
+                                          <p class="text-orange-200 text-sm">Chapter Sumatera</p>
+                                      </div>
+                                  </div>
+                                  <p class="text-sm mb-3 line-clamp-2">
+                                      Jl. Pemuda No. 67, Medan. Fokus pada literasi multilingual dan budaya lokal Sumatera.
+                                  </p>
+                                  <div class="flex items-center text-xs text-white/80">
+                                      <i class="bi bi-people-fill mr-1"></i> 700+ Anggota
+                                      <i class="bi bi-book-half ml-3 mr-1"></i> 1.900+ Buku
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- Slider controls -->
+                  <button type="button" class="carousel-control absolute top-1/2 -translate-y-1/2 start-0 z-30 ms-4" data-carousel-prev>
+                      <i class="bi bi-chevron-left text-white text-xl"></i>
+                  </button>
+                  <button type="button" class="carousel-control absolute top-1/2 -translate-y-1/2 end-0 z-30 me-4" data-carousel-next>
+                      <i class="bi bi-chevron-right text-white text-xl"></i>
+                  </button>
+              </div>
           </div>
         </div>
-
-        <!-- Carousel (dibatasi lebarnya) -->
-        <div id="indicators-carousel" class="relative w-full max-w-sm mt-4" data-carousel="static">
-          <div class="relative aspect-video overflow-hidden rounded-lg">
-            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-              <img src="../image/tentang-kami.jpg" class="block w-full h-full object-cover" alt="...">
+        
+        <!-- Links & Contact -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/20">
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="bi bi-link-45deg mr-2 text-orange-300"></i>
+                    Tautan Cepat
+                </h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Beranda</a></li>
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Tentang Kami</a></li>
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Program & Kegiatan</a></li>
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Pojok Baca Digital</a></li>
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Berita & Artikel</a></li>
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Galery Publikasi</a></li>
+                </ul>
             </div>
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="../image/edukasi.jpg" class="block w-full h-full object-cover" alt="...">
+            
+            <!-- Programs -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="bi bi-journal-bookmark mr-2 text-orange-300"></i>
+                    Program Kami
+                </h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Rumah Baca Keliling</a></li>
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Donasi Buku</a></li>
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Workshop Literasi</a></li>
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Program Relawan</a></li>
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Komunitas Baca</a></li>
+                    <li><a href="#" class="footer-link text-emerald-100 hover:text-white">Pelat Guru Pendidikan</a></li>
+                </ul>
             </div>
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="../image/donation.jpg" class="block w-full h-full object-cover" alt="...">
+            
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="bi bi-envelope-paper mr-2 text-orange-300"></i>
+                    Kontak Kami
+                </h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="bi bi-geo-alt text-orange-300 mt-1 mr-3"></i>
+                        <span class="text-emerald-100">Jl. Pendidikan No. 123, Jakarta Puset, DKI Jakarta</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="bi bi-telephone text-orange-300 mt-1 mr-3"></i>
+                        <span class="text-emerald-100">+62 21 1234 5678</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="bi bi-whatsapp text-orange-300 mt-1 mr-3"></i>
+                        <span class="text-emerald-100">+62 812 3456 7890</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="bi bi-envelope text-orange-300 mt-1 mr-3"></i>
+                        <span class="text-emerald-100">info@rumahbacaulilalbab.org</span>
+                    </li>
+                </ul>
+                
+                <!-- Newsletter Subscription -->
+                <div class="mt-6">
+                    <h4 class="text-sm font-semibold mb-2 text-white">Berlangganan Newsletter</h4>
+                    <div class="flex">
+                        <input type="email" placeholder="Email Anda" class="px-3 py-2 bg-white/10 border border-white/20 rounded-l-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-orange-300 w-full">
+                        <button class="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-r-lg text-white font-medium transition">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="../image/event.jpg" class="block w-full h-full object-cover" alt="...">
-            </div>
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="../image/donasi-picture.jpg" class="block w-full h-full object-cover" alt="...">
-            </div>
-          </div>
-
-          <!-- Controls -->
-          <button type="button" class="absolute inset-y-0 start-0 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 group-hover:bg-white/50">
-              <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-              </svg>
-            </span>
-          </button>
-          <button type="button" class="absolute inset-y-0 end-0 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 group-hover:bg-white/50">
-              <svg class="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-              </svg>
-            </span>
-          </button>
         </div>
-      </div>
-
-      <!-- Bagian kanan: Connect + Links -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- Connect with -->
-        <div>
-          <span class="text-neutral-300 font-semibold block mb-3">Terhubung</span>
-          <div class="flex flex-nowrap w-[22rem] items-center gap-3">
-            <a href="http://" target="_blank" class="flex justify-center items-center w-12 h-12 text-red-600 bg-neutral-50 text-2xl rounded-full">
-              <i class="bi bi-youtube"></i>
-            </a>
-            <a href="http://" target="_blank" class="flex justify-center items-center w-12 h-12 text-neutral-600 bg-neutral-50 text-2xl rounded-full">
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a href="http://" target="_blank" class="flex justify-center items-center w-12 h-12 text-blue-600 bg-neutral-50 text-2xl rounded-full">
-              <i class="bi bi-facebook"></i>
-            </a>
-            <a href="http://" target="_blank" class="flex justify-center items-center w-12 h-12 text-neutral-600 bg-neutral-50 text-2xl rounded-full">
-              <i class="bi bi-tiktok"></i>
-            </a>
-            <a href="http://" target="_blank" class="flex justify-center items-center w-12 h-12 text-neutral-600 bg-neutral-50 text-2xl rounded-full">
-              <i class="bi bi-twitter-x"></i>
-            </a>
-            <a href="http://" target="_blank" class="flex justify-center items-center w-12 h-12 text-blue-600 bg-neutral-50 text-2xl rounded-full">
-              <i class="bi bi-linkedin"></i>
-            </a>
-          </div>
+        
+        <!-- Copyright -->
+        <div class="mt-10 pt-6 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-3 text-emerald-100 text-sm">
+            <div>© 2025 Rumah Baca Ulil Albab. Seluruh hak cipta dilindungi.</div>
+            <div class="flex items-center gap-4">
+                <a href="#" class="footer-link text-emerald-100 hover:text-white">Kebijakan Privasi</a>
+                <a href="#" class="footer-link text-emerald-100 hover:text-white">Syarat & Ketentuan</a>
+                <a href="#" class="footer-link text-emerald-100 hover:text-white">Peta Situs</a>
+            </div>
         </div>
-
-        <!-- Quick Links -->
-        <div class="ml-[0] sm:ml-[5rem]">
-          <div class="font-semibold mb-3 text-neutral-300">Tautan</div>
-          <ul class="space-y-2 text-emerald-100/90 text-sm">
-            <li><a href="#" class="hover:underline text-neutral-50 font-semibold">Beranda</a></li>
-            <li><a href="#about" class="hover:underline text-neutral-50 font-semibold">Tentang Kami</a></li>
-            <li><a href="#programs" class="hover:underline text-neutral-50 font-semibold">Program</a></li>
-            <li><a href="#pojokbaca" class="hover:underline text-neutral-50 font-semibold">Pojok Baca</a></li>
-            <li><a href="#news" class="hover:underline text-neutral-50 font-semibold">Berita</a></li>
-          </ul>
-        </div>
-      </div>
-
     </div>
-
-    <!-- Copyright -->
-    <div class="mt-10 border-t border-white/20 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-emerald-100/90 text-sm">
-      <div>© 2025 Rumah Baca Ulil Albab. Semua hak dilindungi.</div>
-      <div>Didesain dengan ♥ oleh Tim Ulil Albab — tema: hijau & oranye.</div>
-    </div>
-  </div>
 </footer>
 
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-<script src="N&F.js"></script>
-    <script>
-    // init AOS
-    AOS.init({ duration: 700, once: true });
-
-    // mobile menu toggle
-    const mobileBtn = document.getElementById('mobileBtn');
-    const mobilePanel = document.getElementById('mobilePanel');
-    mobileBtn?.addEventListener('click', () => {
-      if (mobilePanel.classList.contains('hidden')) {
-        mobilePanel.classList.remove('hidden');
-        mobilePanel.classList.add('animate-slide-down');
-      } else {
-        mobilePanel.classList.add('hidden');
-        mobilePanel.classList.remove('animate-slide-down');
-      }
+<script>
+    // Initialize AOS
+    AOS.init({ 
+        duration: 800, 
+        once: true,
+        offset: 50 
     });
-
-    // simple "will-animate" reveal fallback (for browsers without AOS immediate triggering)
-    document.addEventListener('DOMContentLoaded', () => {
-      const els = document.querySelectorAll('.will-animate');
-      els.forEach((el, idx) => {
-        setTimeout(() => el.classList.add('show'), idx * 90);
-      });
+    
+    // Initialize carousel with custom settings
+    document.addEventListener('DOMContentLoaded', function() {
+        // The carousel is automatically initialized by Flowbite
+        // Add any custom carousel interactions here if needed
     });
-
-    // Reader modal
-    function openReader(title){
-      document.getElementById('readerTitle').textContent = title;
-      document.getElementById('readerModal').classList.remove('hidden');
-      document.getElementById('readerModal').classList.add('flex');
-    }
-    function closeReader(){
-      document.getElementById('readerModal').classList.add('hidden');
-      document.getElementById('readerModal').classList.remove('flex');
-    }
-
-    // small accessibility: close modal with Esc
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape') closeReader();
-    });
-
-    // feather icons replacement (if present)
-    try{ feather.replace(); }catch(e){}
-
-    let player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('ytPlayer', {
-        events: {
-          'onReady': function(event) {
-            event.target.playVideo();
-          }
-        }
-      });
-    }
-
-    // Klik iframe wrapper untuk play/pause
-    document.getElementById("ytPlayer").addEventListener("click", function () {
-      if (player.getPlayerState() === YT.PlayerState.PLAYING) {
-        player.pauseVideo();
-      } else {
-        player.playVideo();
-      }
-    });
-  </script>
+</script>
 </body>
 </html>
