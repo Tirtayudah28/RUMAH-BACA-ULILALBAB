@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Video</title>
+  <title>Video Collection | Ulil Albab</title>
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
@@ -12,285 +12,410 @@
 
   <!-- AOS (Animate on Scroll) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    /* Custom scrollbar untuk webkit browsers */
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #404040;
+      border-radius: 10px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #737373;
+      border-radius: 10px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #a3a3a3;
+    }
+    
+    /* Untuk Firefox */
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: #737373 #404040;
+    }
+    
+    /* Smooth transitions */
+    .video-item {
+      transition: all 0.3s ease;
+    }
+    
+    /* Improved focus styles for accessibility */
+    .focus\:ring-orange:focus {
+      outline: 2px solid #ea580c;
+      outline-offset: 2px;
+    }
+  </style>
 </head>
 <body class="bg-gray-50">
   <div id="navbar"></div>
     
   <div class="w-full">
-    <div class="bg-neutral-900 p-6 sm:p-10 md:p-16 lg:p-14 mt-8 mb-[6rem] md:mb-[2rem]">
-
-        <!-- Heading -->
-      <div class="flex items-center gap-3 mb-6 mt-4">
+    <div class="bg-neutral-900 px-4 sm:px-6 md:px-10 lg:px-14 py-8 md:py-12 lg:py-14 mt-8 mb-[6rem] md:mb-[2rem]">
+      <!-- Heading -->
+      <div class="flex items-center gap-3 mb-6 mt-4" data-aos="fade-right">
         <div class="w-2 h-10 bg-orange-600 rounded"></div>
         <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">Video</h2>
       </div>
   
-        <!-- Kategori -->
-      <div class="flex flex-nowrap overflow-x-auto gap-3 pb-3 scrollbar-hide whitespace-nowrap mb-6">
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">Animasi</span>
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">Khutbah</span>
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">Podcast</span>
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">Series</span>
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">Refleksi</span>
+      <!-- Kategori -->
+      <div class="flex flex-nowrap overflow-x-auto gap-3 pb-4 custom-scrollbar whitespace-nowrap mb-6" data-aos="fade-up">
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Animasi</span>
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Khutbah</span>
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Podcast</span>
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Series</span>
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Refleksi</span>
         <span class="px-4 py-1.5 text-gray-400">|</span>
-        <span class="px-4 py-1.5 text-gray-400">Topic:</span>
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">Keyakinan</span>
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">Syariah</span>
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">Politik</span>
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">History</span>
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">Sains</span>
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">Psikologi</span>
-        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition">Data</span>
+        <span class="px-4 py-1.5 text-gray-400">Topik:</span>
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Keyakinan</span>
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Syariah</span>
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Politik</span>
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Sejarah</span>
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Sains</span>
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Psikologi</span>
+        <span class="px-4 py-1.5 rounded-full bg-neutral-700 text-gray-100 text-xs sm:text-sm font-medium cursor-pointer hover:bg-orange-600 transition focus:ring-orange focus:outline-none">Data</span>
       </div>
   
       <!-- Section Video -->
-      <section class="flex flex-col lg:flex-row gap-6 lg:gap-4 mt-6">
-        <!-- main video -->
-        <div class="mt-2 flex flex-col w-full lg:w-[52rem] ">
-          <video id="mainVideo" class="w-full h-[14rem] sm:h-[20rem] md:h-[25rem] lg:h-[30rem]" controls preload="metadata" controls>
-            <source src="../image/video-rumahbaca.mp4" type="video/mp4">
-          </video>
+      <section class="flex flex-col lg:flex-row gap-6 lg:gap-8 mt-6">
+        <!-- Main video -->
+        <div class="mt-2 flex flex-col w-full lg:w-[68%]" data-aos="fade-right">
+          <div class="relative rounded-lg overflow-hidden shadow-lg">
+            <video id="mainVideo" class="w-full h-auto aspect-video" controls preload="metadata" poster="../image/video-poster.jpg">
+              <source src="../image/video-rumahbaca.mp4" type="video/mp4">
+              Browser Anda tidak mendukung pemutar video HTML5.
+            </video>
+          </div>
   
-          <!-- tombol dropdown untuk mobile -->
-          <div class="lg:hidden mt-2">
-            <button id="toggleList" class="flex justify-between items-center w-full bg-neutral-900 p-3 text-neutral-50 font-semibold">
-              <div class="flex flex-col">
-                <span>Terbaru</span>
-                <span class="text-gray-500 text-xs sm:text-sm flex flex-start">1/20</span>
+          <!-- Mobile dropdown button -->
+          <div class="lg:hidden mt-4">
+            <button id="toggleList" class="flex justify-between items-center w-full bg-neutral-800 p-3 text-neutral-50 font-semibold ">
+              <div class="flex flex-col text-left">
+                <span>Daftar Video</span>
+                <span class="text-gray-400 text-xs">1/20 video</span>
               </div>
-              <div class="flex flex-row items-center gap-4">
-                <i class="bi bi-arrow-down-circle text-sm text-gray-500 text-lg"></i>
-                <i id="arrowIcon" class="bi bi-chevron-down transition-transform duration-300 font-bold text-green-800 text-lg"></i>
+              <div class="flex items-center">
+                <i id="arrowIcon" class="bi bi-chevron-down transition-transform duration-300 text-lg text-orange-500"></i>
               </div>
             </button>
-            <!-- List video di mobile -->
-            <div id="videoListMobile" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-              <div class="flex flex-col max-h-[18rem] overflow-y-auto">
-                <!-- contoh video -->
-                <div 
-                  class="flex items-center gap-2 sm:gap-4 w-full cursor-pointer hover:bg-neutral-800 p-2 sm:px-4 rounded-md transition"
+            
+            <!-- Mobile video list -->
+            <div id="videoListMobile" class="bg-neutral-800 rounded-b-lg overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+              <div class="flex flex-col max-h-64 overflow-y-auto py-2 custom-scrollbar">
+                <!-- Video items -->
+                <div class="video-item flex items-center gap-3 p-3 cursor-pointer hover:bg-neutral-700 transition" 
                   data-src="../image/video-rumahbaca.mp4"
                   data-title="Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa">
-                  <span class="video-index text-gray-500 text-xs sm:text-sm">1</span>
-                  <video class="w-24 h-16 pointer-events-none">
-                    <source src="../image/video-rumahbaca.mp4" type="video/mp4">
-                  </video>
-                  <span class="text-[11px] font-bold text-neutral-50">
+                  <span class="video-index text-gray-400 text-sm w-5">1</span>
+                  <div class="relative">
+                    <video class="w-20 h-12 object-cover rounded" preload="metadata">
+                      <source src="../image/video-rumahbaca.mp4#t=0.5" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <i class="bi bi-play-fill text-white text-xs bg-black/40 rounded-full p-1"></i>
+                    </div>
+                  </div>
+                  <span class="text-xs font-medium text-neutral-50 line-clamp-2">
                     Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa
                   </span>
                 </div>
   
-                <div 
-                  class="flex items-center gap-2 sm:gap-4 w-full cursor-pointer hover:bg-neutral-800 p-2 sm:px-4 rounded-md transition"
+                <div class="video-item flex items-center gap-3 p-3 cursor-pointer hover:bg-neutral-700 transition" 
                   data-src="../image/video-rumahbaca.mp4"
                   data-title="Rumah Baca siap membantu anak-anak bangsa menjadi terbiasa literasi">
-                  <span class="video-index text-gray-500 text-xs sm:text-sm">2</span>
-                  <video class="w-24 h-16 pointer-events-none">
-                    <source src="../image/video-rumahbaca.mp4" type="video/mp4">
-                  </video>
-                  <span class="text-[11px] font-bold text-neutral-50">
+                  <span class="video-index text-gray-400 text-sm w-5">2</span>
+                  <div class="relative">
+                    <video class="w-20 h-12 object-cover rounded" preload="metadata">
+                      <source src="../image/video-rumahbaca.mp4#t=0.5" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <i class="bi bi-play-fill text-white text-xs bg-black/40 rounded-full p-1"></i>
+                    </div>
+                  </div>
+                  <span class="text-xs font-medium text-neutral-50 line-clamp-2">
                     Rumah Baca siap membantu anak-anak bangsa menjadi terbiasa literasi
                   </span>
                 </div>
+                
+                <!-- Add more video items as needed -->
               </div>
             </div>
           </div>
   
           <!-- Judul -->
-          <div id="mainTitle" class="text-lg sm:text-xl md:text-2xl text-neutral-50 font-[poppins] font-semibold mt-4">
+          <div id="mainTitle" class="text-xl sm:text-2xl md:text-3xl text-neutral-50 font-semibold mt-4 md:mt-6">
             Pengenalan Program Dari Ulil Albab RUMAH BACA
           </div>
-          <div class="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-4">September 2.2025</div>
+          <div class="text-xs sm:text-sm text-gray-400 mt-2">2 September 2025</div>
   
           <!-- Action buttons -->
-          <div class="flex gap-4 mt-4">
-            <button class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded-lg text-white text-sm transition">
-              <i class="bi bi-bookmark-dash-fill"></i> Bookmark
+          <div class="flex flex-wrap gap-3 mt-4">
+            <button class="flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 px-4 py-2.5 rounded-lg text-white text-sm transition focus:ring-2 focus:ring-orange-500 focus:outline-none">
+              <i class="bi bi-bookmark-plus"></i> Simpan
             </button>
-            <button class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded-lg text-white text-sm transition">
-              <i class="bi bi-share-fill"></i> Share
+            <button class="flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 px-4 py-2.5 rounded-lg text-white text-sm transition focus:ring-2 focus:ring-orange-500 focus:outline-none">
+              <i class="bi bi-share"></i> Bagikan
+            </button>
+            <button class="flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 px-4 py-2.5 rounded-lg text-white text-sm transition focus:ring-2 focus:ring-orange-500 focus:outline-none">
+              <i class="bi bi-download"></i> Unduh
             </button>
           </div>
   
           <!-- Transcript -->
-          <div class="mt-4 sm:mt-6 text-gray-400 text-xs sm:text-sm w-full lg:w-[51rem]">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio explicabo, beatae aut doloremque eaque officiis iure, ipsum in hic magni illo deserunt saepe delectus ratione, modi dolorem officia aliquid temporibus sequi! Voluptatibus cum nobis nisi doloribus. Saepe, voluptatem tempore eaque doloribus labore eligendi non alias iusto rerum eos beatae obcaecati!</p>
+          <div class="mt-5 text-gray-300 text-sm leading-relaxed">
+            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
         </div>
   
-          <!-- Sidebar Video List -->
-        <div class="hidden lg:flex flex-col w-[24rem] bg-neutral-950/70 rounded-xl shadow-lg mt-2 h-[45rem]">
-          <div class="flex justify-between items-center p-4 border-b border-neutral-800 text-white font-semibold">
-            <span>Terbaru</span>
+        <!-- Desktop Sidebar Video List -->
+        <div class="hidden lg:flex flex-col w-[32%] bg-neutral-800 rounded-xl shadow-lg overflow-hidden h-fit max-h-[45rem]" data-aos="fade-left">
+          <div class="flex justify-between items-center p-4 bg-neutral-900 text-white font-semibold">
+            <span>Video Lainnya</span>
             <span class="text-sm text-gray-400">1/20</span>
           </div>
-          <div class="overflow-y-auto px-2">
-            <div class="flex items-center gap-3 p-3 cursor-pointer hover:bg-neutral-800 transition" data-src="../image/video-rumahbaca.mp4"
-            data-title="Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa">
-            <span class="video-index text-xs text-gray-500">2</span>
-              <video class="w-24 h-16 rounded object-cover">
-                <source src="../image/video-rumahbaca.mp4" type="video/mp4">
-              </video>
-              <div>
-                <span class="text-[11px] font-bold text-neutral-50"> Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa </span>
+          <div class="overflow-y-auto custom-scrollbar">
+            <!-- Video items -->
+            <div class="video-item flex items-center gap-3 p-3 cursor-pointer hover:bg-neutral-700 transition" 
+              data-src="../image/video-rumahbaca.mp4"
+              data-title="Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa">
+              <span class="video-index text-xs text-gray-400 w-5">2</span>
+              <div class="relative flex-shrink-0">
+                <video class="w-24 h-14 object-cover rounded" preload="metadata">
+                  <source src="../image/video-rumahbaca.mp4#t=0.5" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <i class="bi bi-play-fill text-white text-sm bg-black/40 rounded-full p-1"></i>
+                </div>
+              </div>
+              <div class="min-w-0">
+                <span class="text-xs font-medium text-neutral-50 line-clamp-2">Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa</span>
+                <span class="text-xs text-gray-400 mt-1">15:30</span>
               </div>
             </div>
 
-            <div class="flex items-center gap-3 p-3 cursor-pointer hover:bg-neutral-800 transition" data-src="../image/video-rumahbaca.mp4"
-            data-title="Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa">
-            <span class="video-index text-xs text-gray-500">3</span>
-              <video class="w-24 h-16 rounded object-cover">
-                <source src="../image/video-rumahbaca.mp4" type="video/mp4">
-              </video>
-              <div>
-                <span class="text-[11px] font-bold text-neutral-50"> Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa </span>
+            <div class="video-item flex items-center gap-3 p-3 cursor-pointer hover:bg-neutral-700 transition" 
+              data-src="../image/video-rumahbaca.mp4"
+              data-title="Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa">
+              <span class="video-index text-xs text-gray-400 w-5">3</span>
+              <div class="relative flex-shrink-0">
+                <video class="w-24 h-14 object-cover rounded" preload="metadata">
+                  <source src="../image/video-rumahbaca.mp4#t=0.5" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <i class="bi bi-play-fill text-white text-sm bg-black/40 rounded-full p-1"></i>
+                </div>
+              </div>
+              <div class="min-w-0">
+                <span class="text-xs font-medium text-neutral-50 line-clamp-2">Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa</span>
+                <span class="text-xs text-gray-400 mt-1">12:45</span>
               </div>
             </div>
-            <div class="flex items-center gap-3 p-3 cursor-pointer hover:bg-neutral-800 transition" data-src="../image/video-rumahbaca.mp4"
-            data-title="Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa">
-            <span class="video-index text-xs text-gray-500">3</span>
-              <video class="w-24 h-16 rounded object-cover">
-                <source src="../image/video-rumahbaca.mp4" type="video/mp4">
-              </video>
-              <div>
-                <span class="text-[11px] font-bold text-neutral-50"> Mari Berkenalan dengan program baru Ulil Albab, Rumah Baca akan membantu anak-anak bangsa </span>
-              </div>
-            </div>
-           
             
+            <!-- Add more video items as needed -->
           </div>
         </div>
       </section>
-
     </div>
 
-    <!-- Daftar Video (Grid bawah) -->
-  <div class="px-6 sm:px-10 md:px-16 lg:px-14 mt-6 mb-6">
-    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="relative group rounded-xl overflow-hidden shadow-md">
-        <img src="../image/anak_membaca.jpg" alt="..." class="w-full h-48 object-cover group-hover:scale-105 transition">
-        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition flex flex-col justify-end p-4">
-          <p class="text-white font-semibold">Khutbah</p>
-          <span class="text-xs text-gray-300">12 item</span>
+    <!-- Video Grid Section -->
+    <div class="px-4 sm:px-6 md:px-10 lg:px-14 mt-6 mb-12">
+      <h3 class="text-2xl font-bold mb-6 text-neutral-800" data-aos="fade-right">Koleksi Video</h3>
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="relative group rounded-xl overflow-hidden shadow-md transition-transform duration-300 hover:shadow-xl" data-aos="zoom-in">
+          <img src="../image/anak_membaca.jpg" alt="Anak membaca" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex flex-col justify-end p-4">
+            <p class="text-white font-semibold">Khutbah</p>
+            <span class="text-xs text-gray-300">12 video</span>
+          </div>
         </div>
-      </div>
-      <div class="relative group rounded-xl overflow-hidden shadow-md">
-        <img src="../image/event.jpg" alt="..." class="w-full h-48 object-cover group-hover:scale-105 transition">
-        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition flex flex-col justify-end p-4">
-          <p class="text-white font-semibold">Khutbah</p>
-          <span class="text-xs text-gray-300">12 item</span>
+        <div class="relative group rounded-xl overflow-hidden shadow-md transition-transform duration-300 hover:shadow-xl" data-aos="zoom-in" data-aos-delay="100">
+          <img src="../image/event.jpg" alt="Event" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex flex-col justify-end p-4">
+            <p class="text-white font-semibold">Podcast</p>
+            <span class="text-xs text-gray-300">8 video</span>
+          </div>
         </div>
-      </div>
-      <div class="relative group rounded-xl overflow-hidden shadow-md">
-        <img src="../image/event.jpg" alt="..." class="w-full h-48 object-cover group-hover:scale-105 transition">
-        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition flex flex-col justify-end p-4">
-          <p class="text-white font-semibold">Khutbah</p>
-          <span class="text-xs text-gray-300">12 item</span>
+        <div class="relative group rounded-xl overflow-hidden shadow-md transition-transform duration-300 hover:shadow-xl" data-aos="zoom-in" data-aos-delay="200">
+          <img src="../image/event.jpg" alt="Event" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex flex-col justify-end p-4">
+            <p class="text-white font-semibold">Animasi</p>
+            <span class="text-xs text-gray-300">15 video</span>
+          </div>
         </div>
-      </div>
-      <div class="relative group rounded-xl overflow-hidden shadow-md">
-        <img src="../image/event.jpg" alt="..." class="w-full h-48 object-cover group-hover:scale-105 transition">
-        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition flex flex-col justify-end p-4">
-          <p class="text-white font-semibold">Khutbah</p>
-          <span class="text-xs text-gray-300">12 item</span>
+        <div class="relative group rounded-xl overflow-hidden shadow-md transition-transform duration-300 hover:shadow-xl" data-aos="zoom-in" data-aos-delay="300">
+          <img src="../image/event.jpg" alt="Event" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex flex-col justify-end p-4">
+            <p class="text-white font-semibold">Series</p>
+            <span class="text-xs text-gray-300">10 video</span>
+          </div>
         </div>
-      </div>
-    </section>
-  </div>
+      </section>
+    </div>
   </div>
 
- <div id="footer"></div>
+  <div id="footer"></div>
   
   <script src="../translate.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
-
-
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const mainVideo  = document.getElementById("mainVideo");
-    const mainTitle  = document.getElementById("mainTitle");
-    const items      = document.querySelectorAll("[data-src]");
-    const toggleBtn  = document.getElementById("toggleList");
-    const listMobile = document.getElementById("videoListMobile");
-    const arrowIcon  = document.getElementById("arrowIcon");
-
-    // Klik pilih video
-    items.forEach((item, i) => {
-      item.addEventListener("click", () => {
-        const newSrc   = item.getAttribute("data-src");
-        const newTitle = item.getAttribute("data-title");
-
-        if (mainVideo && newSrc) {
-          const srcEl = mainVideo.querySelector("source");
-          if (srcEl) {
-            srcEl.src = newSrc;
-            mainVideo.load();
-            mainVideo.play();
-          }
-        }
-        if (mainTitle && newTitle) {
-          mainTitle.textContent = newTitle;
-        }
-
-        // reset semua nomor
-        items.forEach((el, idx) => {
-          const indexEl = el.querySelector(".video-index");
-          if (indexEl) {
-            indexEl.innerHTML = idx + 0;
-            indexEl.classList.remove("text-green-400");
-          }
-        });
-
-        // tandai item aktif
-        const indexEl = item.querySelector(".video-index");
-        if (indexEl) {
-          indexEl.innerHTML = '<i class="bi bi-play-fill"></i>';
-          indexEl.classList.add("text-green-400");
-        }
+    // Initialize AOS
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
       });
     });
 
-    // Dropdown mobile
-    if (toggleBtn && listMobile) {
-      listMobile.style.maxHeight = "0px"; // awalnya tertutup
-      toggleBtn.addEventListener("click", () => {
-        const isClosed = listMobile.style.maxHeight === "0px";
-        if (isClosed) {
-          listMobile.style.maxHeight = listMobile.scrollHeight + "px";
-          arrowIcon && arrowIcon.classList.add("rotate-90");
-        } else {
-          listMobile.style.maxHeight = "0px";
-          arrowIcon && arrowIcon.classList.remove("rotate-90");
-        }
-      });
-    }
-  });
+    // Video player functionality
+    document.addEventListener("DOMContentLoaded", () => {
+      const mainVideo  = document.getElementById("mainVideo");
+      const mainTitle  = document.getElementById("mainTitle");
+      const videoItems = document.querySelectorAll(".video-item");
+      const toggleBtn  = document.getElementById("toggleList");
+      const listMobile = document.getElementById("videoListMobile");
+      const arrowIcon  = document.getElementById("arrowIcon");
 
-  // include navbar dan footer 
-     async function loadComponent(id, file) {
-        const res = await fetch(file);
-        const html = await res.text();
-        document.getElementById(id).innerHTML = html;
+      // Click to select video
+      videoItems.forEach((item, index) => {
+        item.addEventListener("click", () => {
+          const newSrc   = item.getAttribute("data-src");
+          const newTitle = item.getAttribute("data-title");
 
-        // Jalankan ulang semua <script> di file yang di-load
-        const scripts = document.getElementById(id).querySelectorAll("script");
-        scripts.forEach(oldScript => {
-          const newScript = document.createElement("script");
-          if (oldScript.src) {
-            newScript.src = oldScript.src; // untuk file eksternal
-          } else {
-            newScript.textContent = oldScript.textContent; // untuk inline script
+          if (mainVideo && newSrc) {
+            // Update video source
+            mainVideo.querySelector("source").src = newSrc;
+            mainVideo.load();
+            
+            // Play video after metadata is loaded
+            mainVideo.onloadedmetadata = function() {
+              mainVideo.play().catch(e => console.log("Autoplay prevented:", e));
+            };
           }
-          document.body.appendChild(newScript);
+          
+          if (mainTitle && newTitle) {
+            mainTitle.textContent = newTitle;
+          }
+
+          // Update active state
+          videoItems.forEach((el, idx) => {
+            const indexEl = el.querySelector(".video-index");
+            if (indexEl) {
+              indexEl.textContent = idx + 1;
+              indexEl.classList.remove("text-orange-500", "font-bold");
+              el.classList.remove("bg-neutral-700");
+            }
+          });
+
+          // Mark current item as active
+          const indexEl = item.querySelector(".video-index");
+          if (indexEl) {
+            indexEl.innerHTML = '<i class="bi bi-play-fill"></i>';
+            indexEl.classList.add("text-orange-500", "font-bold");
+            item.classList.add("bg-neutral-700");
+          }
+          
+          // Close mobile dropdown after selection
+          if (listMobile && window.innerWidth < 1024) {
+            listMobile.style.maxHeight = "0px";
+            arrowIcon.classList.remove("rotate-180");
+          }
+        });
+      });
+
+      // Mobile dropdown functionality
+      if (toggleBtn && listMobile) {
+        listMobile.style.maxHeight = "0px"; // Initially closed
+        
+        toggleBtn.addEventListener("click", () => {
+          const isClosed = listMobile.style.maxHeight === "0px";
+          
+          if (isClosed) {
+            listMobile.style.maxHeight = listMobile.scrollHeight + "px";
+            arrowIcon.classList.add("rotate-180");
+          } else {
+            listMobile.style.maxHeight = "0px";
+            arrowIcon.classList.remove("rotate-180");
+          }
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!toggleBtn.contains(e.target) && !listMobile.contains(e.target) && window.innerWidth < 1024) {
+            listMobile.style.maxHeight = "0px";
+            arrowIcon.classList.remove("rotate-180");
+          }
         });
       }
-    document.addEventListener("DOMContentLoaded", () => {
-      loadComponent("navbar", "../navbar.html");
-      loadComponent("footer", "../footer.html");
+
+      // Handle video ended event to play next video
+      if (mainVideo) {
+        mainVideo.addEventListener('ended', function() {
+          // Find current active video
+          const activeItem = document.querySelector('.video-item.bg-neutral-700');
+          if (activeItem) {
+            // Get next video item
+            const nextItem = activeItem.nextElementSibling;
+            if (nextItem && nextItem.classList.contains('video-item')) {
+              nextItem.click();
+            }
+          }
+        });
+      }
     });
+
+      // include navbar dan footer 
+  async function loadComponent(id, file) {
+    const res = await fetch(file);
+    const html = await res.text();
+    document.getElementById(id).innerHTML = html;
+
+    // Trigger event bahwa navbar telah dimuat
+    if (id === 'navbar') {
+      document.dispatchEvent(new CustomEvent('navbarLoaded'));
+    }
+
+    // Jalankan ulang semua <script> di file yang di-load
+    const scripts = document.getElementById(id).querySelectorAll("script");
+    scripts.forEach(oldScript => {
+      const newScript = document.createElement("script");
+      if (oldScript.src) {
+        newScript.src = oldScript.src;
+        
+        // Untuk auth.js, setup event listeners setelah selesai dimuat
+        if (oldScript.src.includes('auth.js')) {
+          newScript.onload = function() {
+            console.log('Auth.js loaded, setting up navbar events...');
+            
+            // Setup events setelah auth.js selesai dimuat
+            if (typeof setupNavbarEvents === 'function') {
+              setupNavbarEvents();
+            }
+            if (typeof checkLoginStatus === 'function') {
+              checkLoginStatus();
+            }
+          };
+        }
+      } else {
+        // Untuk inline scripts, jalankan langsung
+        newScript.textContent = oldScript.textContent;
+      }
+      document.body.appendChild(newScript);
+    });
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    loadComponent("navbar", "../navbar.html");
+    loadComponent("footer", "../footer.html");
+  });
   </script>
 </body>
 </html>

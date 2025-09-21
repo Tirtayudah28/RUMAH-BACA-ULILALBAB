@@ -7,7 +7,6 @@
   <meta name="description" content="Rumah Baca Ulil Albab — Program literasi, rumah baca komunitas, donasi buku & kegiatan edukatif." />
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- AOS (Animate on Scroll) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -522,10 +521,6 @@
 
 <div id="footer"></div>
 
-  <style>
-  /* Sembunyikan dropdown Alpine sebelum siap */
-  [x-cloak] { display: none !important; }
-  </style>
 
   <!-- YouTube API -->
   <script src="https://www.youtube.com/iframe_api"></script>
@@ -633,28 +628,50 @@
       });
     });
 
-    // include navbar dan footer 
-     async function loadComponent(id, file) {
-        const res = await fetch(file);
-        const html = await res.text();
-        document.getElementById(id).innerHTML = html;
+   // include navbar dan footer 
+  async function loadComponent(id, file) {
+    const res = await fetch(file);
+    const html = await res.text();
+    document.getElementById(id).innerHTML = html;
 
-        // Jalankan ulang semua <script> di file yang di-load
-        const scripts = document.getElementById(id).querySelectorAll("script");
-        scripts.forEach(oldScript => {
-          const newScript = document.createElement("script");
-          if (oldScript.src) {
-            newScript.src = oldScript.src; // untuk file eksternal
-          } else {
-            newScript.textContent = oldScript.textContent; // untuk inline script
-          }
-          document.body.appendChild(newScript);
-        });
+    // Trigger event bahwa navbar telah dimuat
+    if (id === 'navbar') {
+      document.dispatchEvent(new CustomEvent('navbarLoaded'));
+    }
+
+    // Jalankan ulang semua <script> di file yang di-load
+    const scripts = document.getElementById(id).querySelectorAll("script");
+    scripts.forEach(oldScript => {
+      const newScript = document.createElement("script");
+      if (oldScript.src) {
+        newScript.src = oldScript.src;
+        
+        // Untuk auth.js, setup event listeners setelah selesai dimuat
+        if (oldScript.src.includes('auth.js')) {
+          newScript.onload = function() {
+            console.log('Auth.js loaded, setting up navbar events...');
+            
+            // Setup events setelah auth.js selesai dimuat
+            if (typeof setupNavbarEvents === 'function') {
+              setupNavbarEvents();
+            }
+            if (typeof checkLoginStatus === 'function') {
+              checkLoginStatus();
+            }
+          };
+        }
+      } else {
+        // Untuk inline scripts, jalankan langsung
+        newScript.textContent = oldScript.textContent;
       }
-    document.addEventListener("DOMContentLoaded", () => {
-      loadComponent("navbar", "navbar.html");
-      loadComponent("footer", "footer.html");
+      document.body.appendChild(newScript);
     });
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    loadComponent("navbar", "navbar.html");
+    loadComponent("footer", "footer.html");
+  });
   </script>
   </body>
   </html>

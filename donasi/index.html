@@ -3,515 +3,598 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Donasi - Rumah Baca</title>
+    <title>Donasi - Rumah Baca Ulil Albab</title>
+    <meta name="description" content="Bantu wujudkan akses baca untuk semua anak Indonesia dengan berdonasi untuk program rumah baca Ulil Albab">
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
+    <!-- External Resources (TIDAK DIHAPUS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
       :root {
         --rb-green: #15803d;
         --rb-orange: #f97316;
+        --rb-green-light: #dcfce7;
+        --rb-orange-light: #ffedd5;
       }
+      
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+      
       .text-gradient {
         background: linear-gradient(90deg, var(--rb-green), var(--rb-orange));
-        color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
-      .bg-rb-green {
-        background: var(--rb-green);
+      
+      .bg-pattern {
+        background-image: url("https://transparenttextures.com/patterns/cubes.png");
+        background-size: 200px;
       }
-      .bg-rb-orange {
-        background: var(--rb-orange);
-      }
+      
       .card {
         background: #fff;
         border-radius: 1rem;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
       }
-      .card-hover {
-        transition: 0.25s;
-      }
+      
       .card-hover:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
       }
-      .badge {
-        display: inline-block;
-        padding: 0.35rem 0.6rem;
-        border-radius: 999px;
-        font-size: 0.8rem;
-        background: #f3f4f6;
-      }
+      
       .btn {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
         justify-content: center;
-        padding: 0.9rem 1.1rem;
+        gap: 0.5rem;
+        padding: 0.875rem 1.5rem;
         border-radius: 0.75rem;
-        font-weight: 700;
-        transition: 0.25s;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        cursor: pointer;
       }
+      
       .btn-primary {
         background: var(--rb-green);
-        color: #fff;
+        color: white;
       }
+      
       .btn-primary:hover {
-        background: var(--rb-orange);
+        background: #166534;
+        transform: translateY(-2px);
       }
+      
       .btn-outline {
-        border: 1px solid #e5e7eb;
-        background: #fff;
+        border: 1.5px solid #e5e7eb;
+        background: white;
+        color: #4b5563;
       }
+      
       .btn-outline:hover {
         border-color: var(--rb-orange);
         color: var(--rb-orange);
       }
-      .input,
-      .select,
-      .textarea {
+      
+      .input-field {
         width: 100%;
-        border: 1px solid #d1d5db;
+        border: 1.5px solid #e5e7eb;
         border-radius: 0.75rem;
-        padding: 0.8rem 1rem;
-        outline: none;
-        transition: 0.2s;
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
       }
-      .input:focus,
-      .select:focus,
-      .textarea:focus {
+      
+      .input-field:focus {
         border-color: var(--rb-orange);
         box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+        outline: none;
       }
-      .grid-presets .opt {
-        border: 1px solid #e5e7eb;
-        border-radius: 0.9rem;
+      
+      .donation-option {
+        border: 1.5px solid #e5e7eb;
+        border-radius: 0.75rem;
         padding: 1rem;
         text-align: center;
         cursor: pointer;
-        user-select: none;
+        transition: all 0.2s ease;
+        background: white;
       }
-      .grid-presets .opt.active {
+      
+      .donation-option:hover {
         border-color: var(--rb-orange);
-        background: #fff7ed;
+        background-color: #fff7ed;
       }
-      .tab {
-        border: 1px solid #e5e7eb;
-        border-radius: 0.9rem;
-        overflow: hidden;
-        display: flex;
-      }
-      .tab a {
-        flex: 1;
-        text-align: center;
-        padding: 0.8rem 1rem;
-        font-weight: 600;
-        border-right: 1px solid #e5e7eb;
-      }
-      .tab a:last-child {
-        border-right: none;
-      }
-      .tab a.active {
-        background: #fff7ed;
+      
+      .donation-option.active {
+        border-color: var(--rb-orange);
+        background-color: #fff7ed;
         color: var(--rb-orange);
+        font-weight: 600;
       }
-      .proof-hint {
-        font-size: 0.85rem;
-        color: #6b7280;
+      
+      .checkbox-custom {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        border: 1.5px solid #d1d5db;
+        appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.2s ease;
       }
-      .donor-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        border-bottom: 1px dashed #e5e7eb;
+      
+      .checkbox-custom:checked {
+        background-color: var(--rb-orange);
+        border-color: var(--rb-orange);
       }
-      .avatar {
-        width: 36px;
-        height: 36px;
-        border-radius: 999px;
-        background: #e5f7ec;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--rb-green);
-        font-weight: 700;
+      
+      .checkbox-custom:checked::after {
+        content: "✓";
+        position: absolute;
+        color: white;
+        font-size: 12px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
-      .pagination a {
-        padding: 0.5rem 0.8rem;
-        border: 1px solid #e5e7eb;
-        border-radius: 0.6rem;
-        margin-right: 0.4rem;
+      
+      .progress-bar {
+        height: 6px;
+        background-color: #e5e7eb;
+        border-radius: 3px;
+        overflow: hidden;
       }
-      .pagination a.active {
-        background: var(--rb-green);
-        color: #fff;
-        border-color: var(--rb-green);
+      
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--rb-green), var(--rb-orange));
+        border-radius: 3px;
+        transition: width 0.5s ease;
+      }
+      
+      /* Animations */
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+        100% { transform: scale(1); }
+      }
+      
+      .pulse-animation {
+        animation: pulse 2s infinite;
+      }
+      
+      /* Loading state */
+      .loading {
+        opacity: 0.7;
+        pointer-events: none;
+      }
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: #c5c5c5;
+        border-radius: 10px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--rb-orange);
       }
     </style>
   </head>
 
-  <body>
+  <body class="bg-gray-50 min-h-screen flex flex-col">
     <div id="navbar"></div>
 
-    <!-- HERO -->
-    <section
-      class="text-white text-center py-20 px-6 bg-[url('https://transparenttextures.com/patterns/cubes.png')] bg-[var(--rb-green)] relative overflow-hidden"
-    >
-      <div class="max-w-4xl mx-auto relative z-10 mt-10">
-        <h1 class="text-4xl sm:text-5xl font-bold mb-4">
-          Bersama Wujudkan Akses Baca untuk Semua
-        </h1>
-        <p class="text-white/90 text-lg">
-          Donasi Anda mendukung buku, rumah baca, dan program literasi bagi
-          anak-anak.
-        </p>
+    <!-- HERO SECTION -->
+     <section class="bg-green-600 text-white relative overflow-hidden"><!-- bg-gradient-to-br from-green-700 to-green-800 -->
+      <div class="bg-pattern absolute inset-0 opacity-10"></div>
+      <div class="container mx-auto px-4 py-16 md:py-24 relative z-10">
+        <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+            Bersama Wujudkan <span class="text-orange-300">Akses Baca</span> untuk Semua
+          </h1>
+          <p class="text-lg md:text-xl text-green-100 mb-8 max-w-2xl mx-auto">
+            Donasi Anda mendukung penyediaan buku, pembangunan rumah baca, dan program literasi bagi anak-anak di seluruh Indonesia.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+            <div class="bg-green-600/30 backdrop-blur-sm rounded-xl p-4 border border-green-500/20">
+              <p class="text-sm">Terkumpul</p>
+              <p class="text-2xl font-bold">Rp 42.500.000</p>
+            </div>
+            <div class="bg-orange-600/30 backdrop-blur-sm rounded-xl p-4 border border-orange-500/20">
+              <p class="text-sm">Target</p>
+              <p class="text-2xl font-bold">Rp 100.000.000</p>
+            </div>
+          </div>
+          <div class="mt-6 max-w-xl mx-auto">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 42.5%"></div>
+            </div>
+            <p class="text-sm mt-2 text-green-200">42.5% tercapai</p>
+          </div>
+        </div>
       </div>
+      <div class="absolute bottom-0 left-0 right-0 h-16 bg-white/10 backdrop-blur-sm"></div>
     </section>
 
-    <!-- Section Donasi -->
-    <section
-      class="py-20 px-6 sm:px-10 lg:px-20 bg-gradient-to-b from-emerald-50 via-white to-orange-50"
-    >
-      <h2 class="text-center text-4xl font-bold mb-10">Donasi</h2>
-      <div
-        class="max-w-7xl mx-auto flex flex-col justify-center items-start lg:flex-row gap-10"
-      >
-        <!-- LEFT: Donasi Form -->
-        <div
-          class="bg-gray-50 shadow-xl rounded-xl p-8 w-full"
-          data-aos="fade-right"
-        >
-          <form id="donasiForm" class="space-y-5">
-            <!-- preset donasi -->
-            <div>
-              <p class="font-semibold mb-3">Donasi anda</p>
-              <div
-                class="grid grid-cols-2 sm:grid-cols-3 gap-3 grid-presets"
-                id="presetGroup"
-              >
-                <div class="opt bg-white">Rp10.000</div>
-                <div class="opt bg-white">Rp50.000</div>
-                <div class="opt bg-white">Rp100.000</div>
+    <!-- DONATION SECTION -->
+    <section class="py-16 md:py-20 px-4 md:px-6 flex-grow">
+      <div class="container mx-auto max-w-6xl">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">Beri Dukungan Anda</h2>
+        <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Pilih jumlah donasi dan metode pembayaran yang paling nyaman untuk Anda</p>
+        
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-10">
+          <!-- DONATION FORM -->
+          <div class="w-full lg:w-7/12" data-aos="fade-right">
+            <div class="card card-hover p-6 md:p-8">
+              <form id="donasiForm" class="space-y-6">
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-800 mb-4">Jumlah Donasi</h3>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+                    <div class="donation-option" data-value="10000">Rp10.000</div>
+                    <div class="donation-option" data-value="50000">Rp50.000</div>
+                    <div class="donation-option" data-value="100000">Rp100.000</div>
+                    <div class="donation-option" data-value="250000">Rp250.000</div>
+                    <div class="donation-option" data-value="500000">Rp500.000</div>
+                    <div class="donation-option" data-value="1000000">Rp1.000.000</div>
+                  </div>
+                  
+                  <div class="mt-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Atau masukkan jumlah lainnya</label>
+                    <div class="flex">
+                      <span class="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-gray-300 bg-gray-50 text-gray-600">Rp</span>
+                      <input
+                        type="number"
+                        id="customAmount"
+                        inputmode="numeric"
+                        class="input-field rounded-l-none rounded-r-lg"
+                        placeholder="Masukkan jumlah"
+                        min="1000"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-800 mb-4">Data Diri</h3>
+                  <label class="flex items-start gap-3 mb-6">
+                    <input type="checkbox" id="isAnonymous" class="checkbox-custom mt-1" />
+                    <span class="text-gray-700">Saya ingin menyembunyikan identitas (donasi anonim)</span>
+                  </label>
+                  
+                  <div id="donorInfo" class="space-y-4">
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                      <input
+                        type="text"
+                        id="nameInp"
+                        class="input-field"
+                        placeholder="Nama lengkap"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">Alamat Email</label>
+                      <input
+                        type="email"
+                        id="emailInp"
+                        class="input-field"
+                        placeholder="Email aktif"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-800 mb-4">Pesan Pendukung (Opsional)</h3>
+                  <textarea
+                    id="messageInp"
+                    class="input-field"
+                    rows="3"
+                    placeholder="Tulis pesan penyemangat atau doa untuk penerima manfaat..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  id="submitBtn"
+                  class="btn btn-primary w-full py-3 text-lg pulse-animation"
+                >
+                  <i class="bi bi-heart-fill"></i>
+                  <span id="submitText">Lanjut ke Pembayaran</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- PAYMENT METHODS -->
+          <div class="w-full lg:w-5/12" data-aos="fade-left">
+            <div class="sticky top-6 space-y-6">
+              <div class="card p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Metode Pembayaran</h3>
+                <p id="paymentPlaceholder" class="text-gray-500 text-center py-8">
+                  Pilih jumlah donasi terlebih dahulu untuk melihat metode pembayaran
+                </p>
+                <div id="midtransContainer" class="hidden"></div>
+              </div>
+              
+              <div class="card p-6 bg-green-50 border border-green-100">
+                <h3 class="text-lg font-semibold text-green-800 mb-3">Manfaat Donasi Anda</h3>
+                <ul class="space-y-2 text-sm text-green-700">
+                  <li class="flex items-start gap-2">
+                    <i class="bi bi-check-circle-fill text-green-500 mt-0.5"></i>
+                    <span>Menyediakan buku bacaan berkualitas untuk anak-anak</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="bi bi-check-circle-fill text-green-500 mt-0.5"></i>
+                    <span>Membangun dan merenovasi rumah baca di daerah terpencil</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="bi bi-check-circle-fill text-green-500 mt-0.5"></i>
+                    <span>Mendukung program literasi dan pendidikan anak</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="bi bi-check-circle-fill text-green-500 mt-0.5"></i>
+                    <span>Pelatihan untuk relawan pengelola rumah baca</span>
+                  </li>
+                </ul>
               </div>
             </div>
-
-            <!-- input donasi -->
-            <div id="customAmountWrapper">
-              <div class="flex flex-1">
-                <span class="p-4 rounded-l-xl border border-gray-300">Rp</span>
-                <input
-                  inputmode="numeric"
-                  name="amount"
-                  id="customAmount"
-                  type="number"
-                  class="w-full border border-gray-300 rounded-r-xl px-4 py-3 outline-none transition duration-200 focus:border-[var(--rb-orange)] focus:ring-0 focus:shadow-[0_0_0_3px_rgba(249,115,22,0.15)]"
-                />
-              </div>
-            </div>
-
-            <!-- message -->
-            <div>
-              <label class="font-semibold mb-2 inline-block"
-                >Pesan (opsional)</label
-              >
-              <textarea
-                id="messageInp"
-                name="message"
-                class="textarea w-full"
-                rows="3"
-                placeholder="Tulis doa/dukungan singkat..."
-              ></textarea>
-            </div>
-
-            <!-- nama dan email -->
-            <label class="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                name="isAnonymous"
-                id="isAnonymous"
-                class="w-5 h-5 text-orange-500 border-gray-300 bg-orange-100 rounded focus:ring-orange-500"
-              />
-              <span>Saya ingin data diri saya anonim</span>
-            </label>
-            <div
-              class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4"
-              id="donorInfo"
-            >
-              <div>
-                <label class="font-semibold mb-2 inline-block">Nama</label>
-                <input
-                  id="nameInp"
-                  type="text"
-                  class="input w-full"
-                  name="name"
-                  placeholder="Nama lengkap"
-                />
-              </div>
-              <div>
-                <label class="font-semibold mb-2 inline-block">Email</label>
-                <input
-                  id="emailInp"
-                  type="email"
-                  class="input w-full"
-                  name="email"
-                  placeholder="Email anda"
-                />
-              </div>
-            </div>
-
-            <button
-              id="submitBtn"
-              class="bg-emerald-600 hover:bg-emerald-500 font-bold rounded-lg text-white p-3 w-full transition"
-            >
-              <span id="submitText">Next: Metode Pembayaran</span>
-            </button>
-          </form>
-        </div>
-
-        <div
-          class="bg-white flex flex-col w-full overflow-x-hidden"
-          data-aos="fade-left"
-        >
-          <span id="paymentPlaceholder">
-            Metode pembayaran akan muncul disini setelah anda menyelesaikan
-            pengisian form
-          </span>
-          <div id="midtransContainer" class="w-full"></div>
+          </div>
         </div>
       </div>
     </section>
 
     <div id="footer"></div>
 
+    <!-- External Scripts (TIDAK DIHAPUS) -->
     <script src="../translate.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-tHOtgoOSHvK8ItTN"></script>
 
-    <!-- midtrans snap -->
-    <script
-      src="https://app.sandbox.midtrans.com/snap/snap.js"
-      data-client-key="SB-Mid-client-tHOtgoOSHvK8ItTN"
-    ></script>
-
-    <!-- JS Interaktif -->
     <script>
-      const presets = document.querySelectorAll("#presetGroup .opt");
-      const presetInput = document.getElementById("presetInput");
-      const customAmount = document.getElementById("customAmount");
-      const customAmountWrapper = document.getElementById(
-        "customAmountWrapper"
-      );
-      const submitBtn = document.getElementById("submitBtn");
-      const submitText = document.getElementById("submitText");
-      const nameInp = document.getElementById("nameInp");
-      const emailInp = document.getElementById("emailInp");
-      const messageInp = document.getElementById("messageInp");
-      const checkbox = document.getElementById("isAnonymous");
-      const donorInfo = document.getElementById("donorInfo");
-      const donasiForm = document.getElementById("donasiForm");
-      const paymentPlaceholder = document.getElementById("paymentPlaceholder");
+      // Initialize AOS
+      document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-out',
+          once: true
+        });
+      });
 
-      //anonymous checkbox
-      checkbox.addEventListener("change", () => {
-        if (checkbox.checked) {
-          donorInfo.style.display = "none";
-          donorInfo.querySelectorAll("input").forEach((input) => {
-            input.required = false;
-            input.value = "";
+      // DOM Elements
+      const donationOptions = document.querySelectorAll('.donation-option');
+      const customAmount = document.getElementById('customAmount');
+      const isAnonymous = document.getElementById('isAnonymous');
+      const donorInfo = document.getElementById('donorInfo');
+      const donasiForm = document.getElementById('donasiForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const submitText = document.getElementById('submitText');
+      const nameInp = document.getElementById('nameInp');
+      const emailInp = document.getElementById('emailInp');
+      const messageInp = document.getElementById('messageInp');
+      const paymentPlaceholder = document.getElementById('paymentPlaceholder');
+      const midtransContainer = document.getElementById('midtransContainer');
+
+      // Set initial donation amount
+      let selectedAmount = 0;
+
+      // Donation option selection
+      donationOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          donationOptions.forEach(opt => opt.classList.remove('active'));
+          option.classList.add('active');
+          selectedAmount = option.getAttribute('data-value');
+          customAmount.value = selectedAmount;
+        });
+      });
+
+      // Custom amount input
+      customAmount.addEventListener('input', () => {
+        if (customAmount.value) {
+          donationOptions.forEach(opt => opt.classList.remove('active'));
+          selectedAmount = customAmount.value;
+        }
+      });
+
+      // Anonymous checkbox
+      isAnonymous.addEventListener('change', () => {
+        if (isAnonymous.checked) {
+          donorInfo.style.display = 'none';
+          donorInfo.querySelectorAll('input').forEach(input => {
+            input.removeAttribute('required');
+            input.value = '';
           });
         } else {
-          donorInfo.style.display = "grid";
-          donorInfo.querySelector("input[name='name']").required = true;
+          donorInfo.style.display = 'block';
+          donorInfo.querySelectorAll('input').forEach(input => {
+            input.setAttribute('required', 'true');
+          });
         }
       });
 
-      //input nilai donasi
-      presets.forEach((opt) => {
-        opt.addEventListener("click", () => {
-          if (
-            submitText.textContent.includes("Loading") ||
-            submitText.textContent.includes("Pilih metode pembayaran")
-          ) {
-            return;
-          }
-          presets.forEach((o) => o.classList.remove("active"));
-          opt.classList.add("active");
-
-          let val = opt.textContent.trim();
-
-          if (val.toLowerCase().includes("lainnya")) {
-            customAmountWrapper.style.display = "block";
-            customAmount.value = "";
-            presetInput.value = "";
-          } else {
-            customAmount.value = val.replace(/[^\d]/g, "");
-            presetInput.value = customAmount.value;
-          }
-        });
-      });
-      customAmount.addEventListener("input", () => {
-        let val = customAmount.value.trim();
-        if (val) {
-          presetInput.value = val;
-        }
-        let matched = false;
-        presets.forEach((opt) => {
-          let optVal = opt.textContent.replace(/[^\d]/g, "");
-          if (optVal === val) {
-            opt.classList.add("active");
-            matched = true;
-          } else {
-            opt.classList.remove("active");
-          }
-        });
-
-        if (!matched) {
-          presets.forEach((opt) => opt.classList.remove("active"));
-        }
-      });
-
-      //handle submit form
-      donasiForm.addEventListener("submit", async (e) => {
+      // Form submission
+      donasiForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        const formData = new FormData(donasiForm);
-        const data = Object.fromEntries(formData.entries());
-        const isAnonymousState = checkbox.checked;
-
-        if (!data.amount || isNaN(data.amount) || Number(data.amount) <= 0) {
+        
+        // Validate amount
+        if (!selectedAmount && !customAmount.value) {
           Swal.fire({
-            icon: "warning",
-            text: "Jumlah donasi wajib diisi",
+            icon: 'warning',
+            title: 'Jumlah Donasi',
+            text: 'Silakan pilih atau masukkan jumlah donasi',
+            confirmButtonColor: '#f97316'
           });
           return;
         }
-
-        if (!isAnonymousState) {
-          if (
-            !data.name ||
-            data.name.trim().length === 0 ||
-            !data.email ||
-            data.email.trim().length === 0
-          ) {
-            Swal.fire({
-              icon: "warning",
-              text: "Nama dan email wajib diisi jika tidak anonim",
-            });
-            return;
-          }
-        }
-
-        const requestPayload = {
-          userId: null,
-          name: isAnonymousState ? null : data.name,
-          email: isAnonymousState ? null : data.email,
-          message: data.message,
-          amount: Number(data.amount),
-          isAnonymous: isAnonymousState,
-        };
-
-        console.log(requestPayload);
-        customAmount.readOnly = true;
-        messageInp.readOnly = true;
-        emailInp.readOnly = true;
-        nameInp.readOnly = true;
-        checkbox.readOnly = true;
-        submitBtn.disabled = true;
-        submitBtn.classList.add("opacity-50", "cursor-not-allowed");
-        submitText.textContent = "Loading, Mohon tunggu...";
-
-        try {
-          const res = await fetch("https://rbca-api.vercel.app/api/donation", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(requestPayload),
-          });
-
-          if (!res.ok) throw new Error("Gagal kirim donasi");
-
-          const result = await res.json();
-
-          // embed midtrans
-          window.snap.embed(result.data.snapToken, {
-            embedId: "midtransContainer",
-            onSuccess: function (res) {
-              Swal.fire({
-                icon: "success",
-                text: "Donasi berhasil dikirim. Terima kasih atas donasi Anda!",
-                timer: 2000,
-                showCancelButton: false,
-              }).then(() => {
-                window.location.reload();
-              });
-            },
-            onPending: function (res) {
-              Swal.fire({
-                icon: "info",
-                text: "Status pembayaran pending, silahkan lanjutkan nanti",
-              }).then(() => {
-                window.location.reload();
-              });
-              console.log("Pending:", res);
-            },
-            onError: function (res) {
-              Swal.fire({
-                icon: "error",
-                text: "Terjadi kesalahan saat proses pembayaran. Donasi dibatalkan",
-              }).then(() => {
-                window.location.reload();
-              });
-              console.error("Error:", res);
-            },
-            onClose: function () {
-              console.log("Embed closed");
-            },
-          });
-
-          submitText.textContent = "Pilih metode pembayaran untuk melanjutkan";
-          submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
-          paymentPlaceholder.style.display = "none";
-        } catch (err) {
-          console.error(err);
+        
+        const amount = selectedAmount || customAmount.value;
+        
+        // Validate donor info if not anonymous
+        if (!isAnonymous.checked && (!nameInp.value || !emailInp.value)) {
           Swal.fire({
-            icon: "error",
-            text: "Terjadi kesalahan saat mengirim donasi",
+            icon: 'warning',
+            title: 'Data Diri',
+            text: 'Silakan lengkapi nama dan email Anda',
+            confirmButtonColor: '#f97316'
           });
+          return;
+        }
+        
+        // Prepare data
+        const formData = {
+          userId: null,
+          name: isAnonymous.checked ? null : nameInp.value,
+          email: isAnonymous.checked ? null : emailInp.value,
+          message: messageInp.value,
+          amount: Number(amount),
+          isAnonymous: isAnonymous.checked
+        };
+        
+        // UI Loading state
+        setLoadingState(true);
+        
+        try {
+          // API call
+          const res = await fetch('https://rbca-api.vercel.app/api/donation', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
+          
+          if (!res.ok) throw new Error('Gagal mengirim donasi');
+          
+          const result = await res.json();
+          
+          // Show payment methods
+          paymentPlaceholder.classList.add('hidden');
+          midtransContainer.classList.remove('hidden');
+          
+          // Embed Midtrans
+          window.snap.embed(result.data.snapToken, {
+            embedId: 'midtransContainer',
+            onSuccess: function(result) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Donasi Berhasil!',
+                text: 'Terima kasih atas kontribusi Anda untuk pendidikan Indonesia',
+                confirmButtonColor: '#15803d'
+              }).then(() => {
+                window.location.reload();
+              });
+            },
+            onPending: function(result) {
+              Swal.fire({
+                icon: 'info',
+                title: 'Menunggu Pembayaran',
+                text: 'Silakan selesaikan pembayaran Anda',
+                confirmButtonColor: '#f97316'
+              });
+            },
+            onError: function(result) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Pembayaran Gagal',
+                text: 'Silakan coba lagi atau gunakan metode pembayaran lainnya',
+                confirmButtonColor: '#dc2626'
+              });
+            },
+            onClose: function() {
+              // Optional: handle when user closes the popup without completing payment
+            }
+          });
+          
+          submitText.textContent = 'Pilih Metode Pembayaran';
+          submitBtn.classList.remove('pulse-animation');
+          
+        } catch (error) {
+          console.error('Donation error:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Terjadi Kesalahan',
+            text: 'Silakan coba lagi dalam beberapa saat',
+            confirmButtonColor: '#dc2626'
+          });
+          setLoadingState(false);
         }
       });
-
-      // include navbar dan footer
-      async function loadComponent(id, file) {
-        const res = await fetch(file);
-        const html = await res.text();
-        document.getElementById(id).innerHTML = html;
-
-        const scripts = document.getElementById(id).querySelectorAll("script");
-        scripts.forEach((oldScript) => {
-          const newScript = document.createElement("script");
-          if (oldScript.src) {
-            newScript.src = oldScript.src;
-          } else {
-            newScript.textContent = oldScript.textContent;
-          }
-          document.body.appendChild(newScript);
-        });
+      
+      // Set loading state
+      function setLoadingState(isLoading) {
+        if (isLoading) {
+          submitBtn.classList.add('loading');
+          submitText.textContent = 'Memproses...';
+          submitBtn.disabled = true;
+        } else {
+          submitBtn.classList.remove('loading');
+          submitText.textContent = 'Lanjut ke Pembayaran';
+          submitBtn.disabled = false;
+        }
       }
-      document.addEventListener("DOMContentLoaded", () => {
-        loadComponent("navbar", "../navbar.html");
-        loadComponent("footer", "../footer.html");
-      });
+
+        // include navbar dan footer 
+  async function loadComponent(id, file) {
+    const res = await fetch(file);
+    const html = await res.text();
+    document.getElementById(id).innerHTML = html;
+
+    // Trigger event bahwa navbar telah dimuat
+    if (id === 'navbar') {
+      document.dispatchEvent(new CustomEvent('navbarLoaded'));
+    }
+
+    // Jalankan ulang semua <script> di file yang di-load
+    const scripts = document.getElementById(id).querySelectorAll("script");
+    scripts.forEach(oldScript => {
+      const newScript = document.createElement("script");
+      if (oldScript.src) {
+        newScript.src = oldScript.src;
+        
+        // Untuk auth.js, setup event listeners setelah selesai dimuat
+        if (oldScript.src.includes('auth.js')) {
+          newScript.onload = function() {
+            console.log('Auth.js loaded, setting up navbar events...');
+            
+            // Setup events setelah auth.js selesai dimuat
+            if (typeof setupNavbarEvents === 'function') {
+              setupNavbarEvents();
+            }
+            if (typeof checkLoginStatus === 'function') {
+              checkLoginStatus();
+            }
+          };
+        }
+      } else {
+        // Untuk inline scripts, jalankan langsung
+        newScript.textContent = oldScript.textContent;
+      }
+      document.body.appendChild(newScript);
+    });
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    loadComponent("navbar", "../navbar.html");
+    loadComponent("footer", "../footer.html");
+  });
     </script>
   </body>
 </html>

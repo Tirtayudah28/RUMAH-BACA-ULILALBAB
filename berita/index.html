@@ -1,187 +1,556 @@
-<!-- <?php
-session_start();
-include '../config/koneksi.php';
-?> -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Berita Rumah Baca</title>
-  <link rel="stylesheet" href="berita.css">
+  <title>Berita - Rumah Baca Ulil Albab</title>
+  <meta name="description" content="Ikuti perkembangan terbaru mengenai program, kegiatan, dan dampak positif yang diciptakan Rumah Baca Ulil Albab">
+  
+  <!-- External Resources -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --rb-green: #15803d;
       --rb-orange: #f97316;
+      --rb-green-light: #dcfce7;
+      --rb-orange-light: #ffedd5;
     }
-    * { box-sizing: border-box; } /* pastikan semua elemen tidak meluber */
-    html, body { overflow-x: hidden; } /* hilangkan scroll horizontal */
-    /* Override Tailwind warna biru menjadi hijau/orange */
-    .rb-bg-green { background-color: var(--rb-green); }
-    .rb-bg-orange { background-color: var(--rb-orange); }
-    .rb-text-green { color: var(--rb-green); }
-    .rb-text-orange { color: var(--rb-orange); }
-    .rb-border-green { border-color: var(--rb-green); }
-    .rb-border-orange { border-color: var(--rb-orange); }
-    .rb-hover-green:hover { background-color: var(--rb-green); color: white; }
-    .rb-hover-orange:hover { background-color: var(--rb-orange); color: white; }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fafafa;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, var(--rb-green), var(--rb-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .bg-pattern {
+      background-image: url("https://transparenttextures.com/patterns/cubes.png");
+      background-size: 200px;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    
+    .btn-primary {
+      background: var(--rb-green);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #166534;
+    }
+    
+    .btn-outline {
+      border: 1.5px solid #e5e7eb;
+      background: white;
+      color: #4b5563;
+    }
+    
+    .btn-outline:hover {
+      border-color: var(--rb-orange);
+      color: var(--rb-orange);
+    }
+    
+    .input-field {
+      width: 100%;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+    
+    .input-field:focus {
+      border-color: var(--rb-orange);
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+      outline: none;
+    }
+    
+    .select-field {
+      width: 100%;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      transition: all 0.2s ease;
+    }
+    
+    .select-field:focus {
+      border-color: var(--rb-orange);
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+      outline: none;
+    }
+    
+    .category-badge {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: var(--rb-green-light);
+      color: var(--rb-green);
+    }
+    
+    .news-image {
+      transition: transform 0.3s ease;
+    }
+    
+    .news-card:hover .news-image {
+      transform: scale(1.05);
+    }
+    
+    .loading-spinner {
+      width: 2rem;
+      height: 2rem;
+      border: 2px solid #e5e7eb;
+      border-top: 2px solid var(--rb-green);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #c5c5c5;
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--rb-orange);
+    }
   </style>
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen flex flex-col">
 
 <div id="navbar"></div>
 
-
-<!-- Hero -->
-<section class="relative bg-[url('https://transparenttextures.com/patterns/cubes.png')] bg-[var(--rb-green)] text-white text-center py-12 sm:py-20 px-4 overflow-hidden">
-  <div class="relative z-10 max-w-2xl mx-auto mt-[5rem]">
-    <i class="bi bi-newspaper text-2xl sm:text-4xl text-[var(--rb-orange)] mb-3 sm:mb-4 block animate-bounce" data-aos="fade-down" data-aos-delay="600"></i>
-    <h1 class="text-2xl sm:text-4xl font-extrabold mb-2" data-aos="fade-up" data-aos-delay="600">Berita Rumah Baca</h1>
-    <p class="text-sm sm:text-base md:text-lg text-gray-100" data-aos="fade-up" data-aos-delay="600">
-      Ikuti perkembangan terbaru mengenai program, kegiatan, dan dampak positif yang kami ciptakan.
-    </p>
+<!-- Hero Section -->
+<section class="relative py-20 bg-gradient-to-br from-green-700 to-green-800 text-white overflow-hidden">
+  <div class="bg-pattern absolute inset-0 opacity-10"></div>
+  <div class="container mx-auto px-4 md:px-6 relative z-10">
+    <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm mb-6">
+        <i class="bi bi-newspaper text-3xl text-white"></i>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Berita <span class="text-orange-300">Rumah Baca</span></h1>
+      <p class="text-lg text-green-100 max-w-2xl mx-auto">
+        Ikuti perkembangan terbaru mengenai program, kegiatan, dan dampak positif yang kami ciptakan
+      </p>
+    </div>
   </div>
+  <div class="absolute bottom-0 left-0 right-0 h-12 bg-white/10 backdrop-blur-sm"></div>
 </section>
 
-
-
-<!-- Search + Filter -->
-<section class="max-w-7xl mx-auto px-4 mt-12 mb-20">
-  <div class="flex flex-col md:flex-row justify-between gap-4 mb-6">
-    <div class="relative w-full md:w-1/2">
-      <input id="searchInput" type="text" placeholder="Cari Berita" class="w-full border rb-border-green rounded-md px-10 py-3 focus:ring-[var(--rb-green)] focus:border-[var(--rb-green)]" />
-      <i class="bi bi-search absolute left-3 top-3.5 text-gray-400"></i>
-    </div>
-    <div class="relative w-full md:w-1/4">
-      <select id="kategoriSelect" class="w-full border rb-border-green rounded-md px-4 py-3 appearance-none focus:ring-[var(--rb-green)] focus:border-[var(--rb-green)]">
-        <option value="">Semua Kategori</option>
-        <?php
-        $kategori_query = mysqli_query($koneksi, "SELECT DISTINCT kategori FROM berita");
-        while ($row = mysqli_fetch_assoc($kategori_query)) {
-          echo "<option value=\"{$row['kategori']}\">{$row['kategori']}</option>";
-        }
-        ?>
-      </select>
-      <i class="bi bi-filter absolute right-3 top-3.5 text-gray-400"></i>
-    </div>
-  </div>
-
-  <!-- Loading Spinner -->
-  <div id="loadingSpinner" class="hidden text-center py-6 transition-opacity duration-300 opacity-0">
-    <i class="bi bi-arrow-repeat animate-spin text-3xl text-[var(--rb-green)]"></i>
-  </div>
-
-  <!-- Berita -->
-  <div id="hasilBerita" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-    <?php
-    $result = mysqli_query($conn, "SELECT * FROM berita ORDER BY tanggal DESC");
-    while ($row = mysqli_fetch_assoc($result)) {
-      $judul = htmlspecialchars($row['judul']);
-      $kategori = htmlspecialchars($row['kategori']);
-      $excerpt = htmlspecialchars($row['excerpt']);
-      $tanggal = date('d M Y', strtotime($row['tanggal']));
-      $gambar = htmlspecialchars($row['gambar']);
-      $id = $row['id'];
-      echo '
-      <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
-        <img src="../images/berita/' . $gambar . '" alt="' . $judul . '" class="w-full h-48 object-cover rounded-t-lg">
-        <div class="p-5">
-          <span class="inline-block text-sm bg-[var(--rb-green)] text-white px-3 py-1 rounded-full mb-2">' . $kategori . '</span>
-          <h2 class="font-bold text-lg text-gray-800 mb-2">' . $judul . '</h2>
-          <p class="text-gray-600 text-sm mb-3">' . $excerpt . '</p>
-          <div class="text-sm text-gray-500 mb-3"><i class="bi bi-calendar-event"></i> ' . $tanggal . '</div>
-          <a href="detail-berita.php?id=' . $id . '" class="text-[var(--rb-orange)] font-semibold hover:underline">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+<!-- Search & Filter Section -->
+<section class="py-8 bg-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="card p-6" data-aos="fade-up">
+      <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
+        <h2 class="text-xl font-semibold text-gray-800">Cari Berita</h2>
+        
+        <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+          <div class="relative flex-1">
+            <i class="bi bi-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            <input id="searchInput" type="text" placeholder="Cari judul atau isi berita..." class="input-field pl-10">
+          </div>
+          
+          <select id="categorySelect" class="select-field">
+            <option value="">Semua Kategori</option>
+            <option value="program">Program</option>
+            <option value="kegiatan">Kegiatan</option>
+            <option value="prestasi">Prestasi</option>
+            <option value="kerjasama">Kerjasama</option>
+            <option value="pengumuman">Pengumuman</option>
+          </select>
+          
+          <button id="clearFilters" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition whitespace-nowrap">
+            Reset
+          </button>
         </div>
-      </div>';
-    }
-    ?>
+      </div>
+    </div>
   </div>
-
-  <!-- Tidak ditemukan -->
-  <p id="notFound" class="hidden text-center text-gray-500 py-10">Tidak ada berita ditemukan.</p>
 </section>
 
+<!-- News Section -->
+<section class="py-12 bg-gray-50 flex-grow">
+  <div class="container mx-auto px-4 md:px-6">
+    <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- News items will be loaded here -->
+    </div>
+    
+    <div id="loadingIndicator" class="hidden mt-12 flex justify-center">
+      <div class="loading-spinner"></div>
+    </div>
+    
+    <div id="emptyState" class="hidden mt-12 text-center">
+      <i class="bi bi-newspaper text-5xl text-gray-300 mb-4"></i>
+      <h3 class="text-xl font-semibold text-gray-600 mb-2">Tidak ada berita ditemukan</h3>
+      <p class="text-gray-500">Coba ubah kata kunci pencarian atau filter kategori</p>
+    </div>
+    
+    <div class="mt-12 flex justify-center" id="loadMoreContainer">
+      <button id="loadMoreBtn" class="btn btn-outline">
+        <i class="bi bi-plus-circle"></i> Muat Lebih Banyak
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
 <div id="footer"></div>
 
-<script src="<?= $base_url ?>translate.js"></script>
+<!-- Scripts -->
+<script src="../translate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="berita.js"></script>
+
 <script>
-  const searchInput = document.getElementById('searchInput');
-  const kategoriSelect = document.getElementById('kategoriSelect');
-  const hasilBerita = document.getElementById('hasilBerita');
-  const loading = document.getElementById('loadingSpinner');
-  const notFound = document.getElementById('notFound');
-
-  let timer;
-
-  function showLoading() {
-    loading.classList.remove('hidden');
-    setTimeout(() => loading.classList.add('opacity-100'), 10);
-    hasilBerita.classList.add('opacity-50');
-  }
-
-  function hideLoading() {
-    loading.classList.remove('opacity-100');
-    setTimeout(() => loading.classList.add('hidden'), 300);
-    hasilBerita.classList.remove('opacity-50');
-  }
-
-  function loadBerita() {
-    clearTimeout(timer);
-    showLoading();
-
-    timer = setTimeout(() => {
-      const keyword = searchInput.value;
-      const kategori = kategoriSelect.value;
-
-      fetch(`cari-berita.php?q=${encodeURIComponent(keyword)}&kategori=${encodeURIComponent(kategori)}`)
-        .then(res => res.text())
-        .then(html => {
-          hasilBerita.innerHTML = html.trim();
-          notFound.classList.toggle('hidden', hasilBerita.innerHTML.trim() !== '');
-          hideLoading();
-        });
-    }, 300);
-  }
-
-  searchInput.addEventListener('input', loadBerita);
-  kategoriSelect.addEventListener('change', loadBerita);
-</script>
-<script>
-  AOS.init({
-    once: true,
-    duration: 800,
-    mirror: false
+  // Initialize AOS
+  document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out',
+      once: true,
+      offset: 50
+    });
+    
+    // Load news items
+    loadNewsItems();
   });
 
-  // include navbar dan footer 
-     async function loadComponent(id, file) {
-        const res = await fetch(file);
-        const html = await res.text();
-        document.getElementById(id).innerHTML = html;
+  // Sample news data (replace with your actual data source)
+  const newsData = [
+    { 
+      id: 1, 
+      title: "Grand Opening Rumah Baca Cabang Baru", 
+      excerpt: "Peresmian rumah baca cabang baru di daerah terpencil untuk menjangkau lebih banyak anak-anak yang membutuhkan akses buku.", 
+      category: "program", 
+      image: "https://picsum.photos/600/400?random=1", 
+      date: "15 Jan 2023",
+      author: "Tim Rumah Baca",
+      readTime: "3 min read"
+    },
+    { 
+      id: 2, 
+      title: "Workshop Literasi untuk Guru SD", 
+      excerpt: "Pelatihan teknik mengajar literasi yang efektif bagi guru-guru SD di wilayah sekitar rumah baca.", 
+      category: "kegiatan", 
+      image: "https://picsum.photos/600/400?random=2", 
+      date: "22 Feb 2023",
+      author: "Divisi Pendidikan",
+      readTime: "4 min read"
+    },
+    { 
+      id: 3, 
+      title: "Penghargaan Literasi Nasional 2023", 
+      excerpt: "Rumah Baca Ulil Albab meraih penghargaan sebagai lembaga literasi terbaik se-Indonesia tahun 2023.", 
+      category: "prestasi", 
+      image: "https://picsum.photos/600/400?random=3", 
+      date: "5 Mar 2023",
+      author: "Tim Humas",
+      readTime: "2 min read"
+    },
+    { 
+      id: 4, 
+      title: "Kerjasama dengan Penerbit Terkemuka", 
+      excerpt: "Penandatanganan MoU dengan penerbit terkemuka untuk menyediakan buku-buku berkualitas dengan harga terjangkau.", 
+      category: "kerjasama", 
+      image: "https://picsum.photos/600/400?random=4", 
+      date: "18 Mar 2023",
+      author: "Divisi Partnership",
+      readTime: "5 min read"
+    },
+    { 
+      id: 5, 
+      title: "Program Baca Gratis untuk Anak Yatim", 
+      excerpt: "Inisiatif baru memberikan akses baca gratis dan bimbingan belajar untuk anak yatim di daerah sekitar.", 
+      category: "program", 
+      image: "https://picsum.photos/600/400?random=5", 
+      date: "2 Apr 2023",
+      author: "Tim Sosial",
+      readTime: "3 min read"
+    },
+    { 
+      id: 6, 
+      title: "Festival Literasi Anak 2023", 
+      excerpt: "Acara tahunan yang mempromosikan minat baca melalui berbagai kegiatan menyenangkan untuk anak-anak.", 
+      category: "kegiatan", 
+      image: "https://picsum.photos/600/400?random=6", 
+      date: "10 Apr 2023",
+      author: "Divisi Event",
+      readTime: "4 min read"
+    },
+    { 
+      id: 7, 
+      title: "Donasi Buku dari Masyarakat Mencapai 5.000 Eksemplar", 
+      excerpt: "Terima kasih atas donasi buku dari masyarakat yang telah mencapai 5.000 eksemplar dalam program penggalangan dana.", 
+      category: "pengumuman", 
+      image: "https://picsum.photos/600/400?random=7", 
+      date: "25 Apr 2023",
+      author: "Tim Donasi",
+      readTime: "2 min read"
+    },
+    { 
+      id: 8, 
+      title: "Peluncuran Aplikasi Perpustakaan Digital", 
+      excerpt: "Rumah Baca meluncurkan aplikasi perpustakaan digital untuk memudahkan akses membaca dari mana saja.", 
+      category: "program", 
+      image: "https://picsum.photos/600/400?random=8", 
+      date: "8 Mei 2023",
+      author: "Divisi Teknologi",
+      readTime: "5 min read"
+    },
+    { 
+      id: 9, 
+      title: "Kunjungan Duta Baca Nasional", 
+      excerpt: "Kunjungan kehormatan dari Duta Baca Nasional untuk melihat langsung kegiatan literasi di Rumah Baca.", 
+      category: "prestasi", 
+      image: "https://picsum.photos/600/400?random=9", 
+      date: "15 Mei 2023",
+      author: "Tim Humas",
+      readTime: "3 min read"
+    }
+  ];
 
-        // Jalankan ulang semua <script> di file yang di-load
-        const scripts = document.getElementById(id).querySelectorAll("script");
-        scripts.forEach(oldScript => {
-          const newScript = document.createElement("script");
-          if (oldScript.src) {
-            newScript.src = oldScript.src; // untuk file eksternal
-          } else {
-            newScript.textContent = oldScript.textContent; // untuk inline script
-          }
-          document.body.appendChild(newScript);
-        });
+  // Current state
+  let currentCategory = '';
+  let currentSearch = '';
+  let displayedItems = 6;
+  const itemsPerLoad = 3;
+
+  // DOM elements
+  const newsGrid = document.getElementById('newsGrid');
+  const loadingIndicator = document.getElementById('loadingIndicator');
+  const emptyState = document.getElementById('emptyState');
+  const loadMoreContainer = document.getElementById('loadMoreContainer');
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  const searchInput = document.getElementById('searchInput');
+  const categorySelect = document.getElementById('categorySelect');
+  const clearFiltersBtn = document.getElementById('clearFilters');
+
+  // Load news items based on current filters
+  function loadNewsItems() {
+    loadingIndicator.classList.remove('hidden');
+    newsGrid.innerHTML = '';
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      let filteredItems = newsData;
+      
+      // Apply category filter
+      if (currentCategory) {
+        filteredItems = filteredItems.filter(item => item.category === currentCategory);
       }
-    document.addEventListener("DOMContentLoaded", () => {
-      loadComponent("navbar", "../navbar.html");
-      loadComponent("footer", "../footer.html");
-    });
-</script>
+      
+      // Apply search filter
+      if (currentSearch) {
+        const searchTerm = currentSearch.toLowerCase();
+        filteredItems = filteredItems.filter(item => 
+          item.title.toLowerCase().includes(searchTerm) || 
+          item.excerpt.toLowerCase().includes(searchTerm) ||
+          item.author.toLowerCase().includes(searchTerm)
+        );
+      }
+      
+      if (filteredItems.length === 0) {
+        emptyState.classList.remove('hidden');
+        loadMoreContainer.classList.add('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+        
+        // Show only the number of items based on displayedItems
+        const itemsToShow = filteredItems.slice(0, displayedItems);
+        
+        itemsToShow.forEach(item => {
+          const newsItem = createNewsItem(item);
+          newsGrid.appendChild(newsItem);
+        });
+        
+        // Show/hide load more button
+        if (filteredItems.length > displayedItems) {
+          loadMoreContainer.classList.remove('hidden');
+        } else {
+          loadMoreContainer.classList.add('hidden');
+        }
+      }
+      
+      loadingIndicator.classList.add('hidden');
+    }, 500);
+  }
 
+  // Create news item element
+  function createNewsItem(item) {
+    const categoryNames = {
+      program: 'Program',
+      kegiatan: 'Kegiatan',
+      prestasi: 'Prestasi',
+      kerjasama: 'Kerjasama',
+      pengumuman: 'Pengumuman'
+    };
+    
+    const itemElement = document.createElement('div');
+    itemElement.className = 'news-card card card-hover';
+    itemElement.dataset.category = item.category;
+    
+    itemElement.innerHTML = `
+      <div class="overflow-hidden">
+        <img src="${item.image}" alt="${item.title}" class="news-image w-full h-48 object-cover">
+      </div>
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-3">
+          <span class="category-badge">${categoryNames[item.category]}</span>
+          <span class="text-xs text-gray-500">${item.readTime}</span>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3 line-clamp-2">${item.title}</h3>
+        <p class="text-gray-600 mb-4 line-clamp-3">${item.excerpt}</p>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <i class="bi bi-person text-green-600"></i>
+            </div>
+            <span class="text-sm text-gray-600">${item.author}</span>
+          </div>
+          <span class="text-sm text-gray-500">${item.date}</span>
+        </div>
+        <div class="mt-4 pt-4 border-t border-gray-100">
+          <a href="detail-berita.html?id=${item.id}" class="btn btn-outline w-full justify-center">
+            Baca Selengkapnya
+          </a>
+        </div>
+      </div>
+    `;
+    
+    return itemElement;
+  }
+
+  // Event listeners
+  searchInput.addEventListener('input', (e) => {
+    currentSearch = e.target.value;
+    displayedItems = 6;
+    loadNewsItems();
+  });
+
+  categorySelect.addEventListener('change', (e) => {
+    currentCategory = e.target.value;
+    displayedItems = 6;
+    loadNewsItems();
+  });
+
+  clearFiltersBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    categorySelect.value = '';
+    currentSearch = '';
+    currentCategory = '';
+    displayedItems = 6;
+    loadNewsItems();
+  });
+
+  loadMoreBtn.addEventListener('click', () => {
+    displayedItems += itemsPerLoad;
+    loadNewsItems();
+  });
+
+    // include navbar dan footer 
+  async function loadComponent(id, file) {
+    const res = await fetch(file);
+    const html = await res.text();
+    document.getElementById(id).innerHTML = html;
+
+    // Trigger event bahwa navbar telah dimuat
+    if (id === 'navbar') {
+      document.dispatchEvent(new CustomEvent('navbarLoaded'));
+    }
+
+    // Jalankan ulang semua <script> di file yang di-load
+    const scripts = document.getElementById(id).querySelectorAll("script");
+    scripts.forEach(oldScript => {
+      const newScript = document.createElement("script");
+      if (oldScript.src) {
+        newScript.src = oldScript.src;
+        
+        // Untuk auth.js, setup event listeners setelah selesai dimuat
+        if (oldScript.src.includes('auth.js')) {
+          newScript.onload = function() {
+            console.log('Auth.js loaded, setting up navbar events...');
+            
+            // Setup events setelah auth.js selesai dimuat
+            if (typeof setupNavbarEvents === 'function') {
+              setupNavbarEvents();
+            }
+            if (typeof checkLoginStatus === 'function') {
+              checkLoginStatus();
+            }
+          };
+        }
+      } else {
+        // Untuk inline scripts, jalankan langsung
+        newScript.textContent = oldScript.textContent;
+      }
+      document.body.appendChild(newScript);
+    });
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    loadComponent("navbar", "../navbar.html");
+    loadComponent("footer", "../footer.html");
+  });
+</script>
 </body>
 </html>

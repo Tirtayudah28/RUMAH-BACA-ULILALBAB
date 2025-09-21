@@ -240,22 +240,38 @@
 
     // include navbar dan footer 
      async function loadComponent(id, file) {
-        const res = await fetch(file);
-        const html = await res.text();
-        document.getElementById(id).innerHTML = html;
+  const res = await fetch(file);
+  const html = await res.text();
+  document.getElementById(id).innerHTML = html;
 
-        // Jalankan ulang semua <script> di file yang di-load
-        const scripts = document.getElementById(id).querySelectorAll("script");
-        scripts.forEach(oldScript => {
-          const newScript = document.createElement("script");
-          if (oldScript.src) {
-            newScript.src = oldScript.src; // untuk file eksternal
-          } else {
-            newScript.textContent = oldScript.textContent; // untuk inline script
+  // Jalankan ulang semua <script> di file yang di-load
+  const scripts = document.getElementById(id).querySelectorAll("script");
+  scripts.forEach(oldScript => {
+    const newScript = document.createElement("script");
+    if (oldScript.src) {
+      newScript.src = oldScript.src;
+      
+      // Untuk auth.js, setup event listeners setelah selesai dimuat
+      if (oldScript.src.includes('auth.js')) {
+        newScript.onload = function() {
+          console.log('Auth.js loaded, setting up navbar events...');
+          
+          // Setup events setelah auth.js selesai dimuat
+          if (typeof setupNavbarEvents === 'function') {
+            setupNavbarEvents();
           }
-          document.body.appendChild(newScript);
-        });
+          if (typeof checkLoginStatus === 'function') {
+            checkLoginStatus();
+          }
+        };
       }
+    } else {
+      // Untuk inline scripts, jalankan langsung
+      newScript.textContent = oldScript.textContent;
+    }
+    document.body.appendChild(newScript);
+  });
+}
     document.addEventListener("DOMContentLoaded", () => {
       loadComponent("navbar", "../navbar.html");
       loadComponent("footer", "../footer.html");
