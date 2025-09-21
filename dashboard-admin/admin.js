@@ -231,4 +231,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
     loadProfile();
+<<<<<<< HEAD
   }
+=======
+  }
+>>>>>>> 28de91cc8a1cda52f11af5c48f82f4bd0789801f
